@@ -12,12 +12,13 @@ h2 {
 }
 
 button {
-	font-family: 'Lato', sans-serif;
-	font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2rem;
     background: #25B7D3;
     border-radius: 7px;
-    padding: 1.25rem 2.5rem;
+    padding: 1rem 0;
     margin-top: 1.6rem;
+    width: 13rem;
 }
 
 .intro {
