@@ -14,10 +14,12 @@ room = Blueprint(
 def index():
     return render_template("room.html")
 
-@socketio.on("connect", namespace="/room/socket")
+@socketio.on("connect", namespace="/socket")
 def connect():
-    emit('conn', {'data': 'connected'})
+    emit('rw', {'data': 'connected'})
 
-@socketio.on("rw", namespace="/room/rw")
-def rw():
-    emit("rw", {'data': 'readwrite'}, broadcast=True)
+@socketio.on("broad", namespace="/socket")
+def rw(msg):
+    if not msg:
+        msg = {'data': 'readwrite broaded'}
+    emit("rw", msg, broadcast=True)
