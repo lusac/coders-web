@@ -26,7 +26,7 @@ def create():
 
 @socketio.on("connect", namespace="/socket")
 def connect():
-    emit('rw', {'data': 'connected'})
+    emit('conn', {'data': 'connected'})
 
 
 @socketio.on("broad", namespace="/socket")
