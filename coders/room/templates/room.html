@@ -5,13 +5,24 @@
         <script src="{{ url_for('static', filename='vendor/js/themes/theme-monokai.js') }}"></script>
         <script src="{{ url_for('static', filename='vendor/js/modes/mode-javascript.js') }}"></script>
         <script src="{{ url_for('static', filename='vendor/js/modes/mode-python.js') }}"></script>
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fonts/fonts.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/room/room.css') }}">
     </head>
 <body>
+    <section id="header">
+        <div class="coders-header">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/icon.png') }}" />
+                <h3>Coders</h3>
+            </div>
+             <div class="run">
+                <button class="run-button"><div class="play-button"></div>Run</button>
+            </div>
+        </div>
+    </section>
     <section id="section" data-room-ui="{{room_uuid}}">
         <div id="editor" data-content="{{ content }}"></div>
         <div id="divisor"></div>
