@@ -1,6 +1,6 @@
 import uuid
 
-from flask import Blueprint, render_template, redirect
+from flask import Blueprint, render_template, redirect, session
 from flask.ext.socketio import SocketIO, emit
 from flask import current_app
 
@@ -26,6 +26,9 @@ def index(uuid):
 @room.route("/room/create")
 def create():
     room_uuid = uuid.uuid4().hex
+
+    session['room'] = room_uuid
+
     cache = current_app.redis
     cache.set(room_uuid, '')
     return redirect("/room/%s" % room_uuid)
