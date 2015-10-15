@@ -6,6 +6,7 @@ from home.views import home
 from room.views import room, socketio
 
 app = Flask(__name__)
+app.debug = True
 app.register_blueprint(home)
 app.register_blueprint(room)
 
