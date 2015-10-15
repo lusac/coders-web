@@ -11,17 +11,16 @@
 
 		<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
-		<link type="text/css" rel="stylesheet" href="../static/vendor/css/normalize.css">
-        <link type="text/css" rel="stylesheet" href="../static/vendor/css/foundation.min.css">
-        <link type="text/css" rel="stylesheet" href="../static/css/index.css">
-
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='vendor/css/normalize.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='vendor/css/foundation.min.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/home/index.css') }}">
     </head>
 
     <body>
 		<section class="coders-body">
     		<div class="large-12 intro">
     			<div class="logo-container">
-    				<img src="../static/img/icon.png" />
+    				<img src="{{ url_for('static', filename='img/icon.png') }}" />
     			</div>
     			<h1>Coders!</h1>
                 <h2 id="intro">< share your code with us /> </h2>
