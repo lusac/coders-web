@@ -13,13 +13,12 @@
     </head>
 <body>
     <section id="section" data-room-ui="{{room_uuid}}">
-        <div id="editor"></div>
+        <div id="editor" data-content="{{ content }}"></div>
         <div id="divisor"></div>
         <div id="output"></div>
     </section>
     <footer id="footer">
     </footer>
-
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
     <script src="{{ url_for('static', filename='js/room/websocket.js') }}"></script>
     <script src="{{ url_for('static', filename='js/room/editor.js') }}"></script>

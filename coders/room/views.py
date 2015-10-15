@@ -20,7 +20,8 @@ def index(uuid):
     if not cache.get(uuid):
         # return 404
         pass
-    return render_template("room.html", room_uuid=uuid)
+    content = cache.get('%s:content' % uuid)
+    return render_template("room.html", room_uuid=uuid, content=content)
 
 
 @room.route("/room/create")
@@ -41,6 +42,9 @@ def connect():
 
 @socketio.on("broad", namespace="/socket")
 def rw(msg):
+    uuid = session['room']
+    cache = current_app.redis
+    cache.set('%s:content' % uuid, msg['text'])
     if not msg:
         msg = {'data': 'readwrite broaded'}
     emit("rw", msg, broadcast=True)

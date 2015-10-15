@@ -14,12 +14,14 @@
 
     Editor.prototype.init = function () {
         var JavaScriptMode = ace.require("ace/mode/javascript").Mode;
+        var content = $("#editor").attr("data-content")
 
         this.aceEditor = ace.edit("editor");
         this.aceEditor.setShowPrintMargin(false);
         this.aceEditor.setOption('wrap', 'free');
         this.aceEditor.setTheme("ace/theme/monokai");
         this.aceEditor.session.setMode(new JavaScriptMode());
+        this.aceEditor.setValue(content);
     };
 
     Editor.prototype.bindEvents = function () {
