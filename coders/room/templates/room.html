@@ -20,34 +20,8 @@
     <footer id="footer">
     </footer>
 
-    <script>
-        // Editor
-        var editor = ace.edit("editor"),
-            JavaScriptMode = ace.require("ace/mode/javascript").Mode;
-
-        editor.setShowPrintMargin(false);
-        editor.setOption('wrap', 'free');
-        editor.setTheme("ace/theme/monokai");
-        editor.session.setMode(new JavaScriptMode());
-
-        // Drag and Drop
-        var $editor = $('#editor'),
-            $output = $('#output'),
-            $divisor = $('#divisor'),
-            documentWidth = $(document).width();
-
-        $('#divisor').draggable({
-            axis: "x",
-            cursor: "col-resize",
-            drag: function() {
-                console.log('resizing...');
-                var divisorPosition = $divisor.position().left;
-
-                $editor.css('width', divisorPosition);
-                $editor.find('.ace_content').css('width', divisorPosition);
-                $output.css('width', documentWidth - divisorPosition);
-            },
-        });
-    </script>
+    <script src="../static/js/editor.js"></script>
+    <script src="../static/js/room.js"></script>
+    <script src="../static/js/room_init.js"></script>
 </body>
 </html>
