@@ -1,0 +1,35 @@
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Comfortaa', cursive;
+}
+h1 {
+	font-size: 5em;
+	margin: 0;
+}
+
+h2 {
+    color: #999;
+    font-size: 1.8rem;
+}
+
+button {
+	font-family: 'Lato', sans-serif;
+	font-size: 1.2rem;
+    background: #25B7D3;
+    border-radius: 7px;
+    padding: 1.25rem 2.5rem;
+    margin-top: 1.6rem;
+}
+
+.intro {
+	text-align: center;
+}
+
+.intro img {
+	width: 15rem;
+}
+
+.logo-container {
+    background-color: #EEE;
+    padding: 2.5rem;
+    margin-bottom: 1.9rem;
+}
