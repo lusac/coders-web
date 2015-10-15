@@ -1,29 +1,53 @@
 <html>
     <head>
         <meta charset='utf-8'>
-        <script type="text/javascript" src="static/vendor/js/ace.js"></script>
-        <script type="text/javascript" src="static/vendor/js/themes/theme-monokai.js"></script>
-        <script type="text/javascript" src="static/vendor/js/modes/mode-javascript.js"></script>
-        <script type="text/javascript" src="static/vendor/js/modes/mode-python.js"></script>
+        <script src="static/vendor/js/ace.js"></script>
+        <script src="static/vendor/js/themes/theme-monokai.js"></script>
+        <script src="static/vendor/js/modes/mode-javascript.js"></script>
+        <script src="static/vendor/js/modes/mode-python.js"></script>
 
-        <style type="text/css">
-            #editor {
-                position: absolute;
-                width: 500px;
-                height: 400px;
-            }
-        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="static/css/room.css">
     </head>
 <body>
-    <h1>Room</h1>
-    <div id="editor"></div>
+    <section id="section">
+        <div id="editor"></div>
+        <div id="divisor"></div>
+        <div id="output"></div>
+    </section>
+    <footer id="footer">
+    </footer>
 
     <script>
+        // Editor
         var editor = ace.edit("editor"),
             JavaScriptMode = ace.require("ace/mode/javascript").Mode;
 
+        editor.setShowPrintMargin(false);
+        editor.setOption('wrap', 'free');
         editor.setTheme("ace/theme/monokai");
         editor.session.setMode(new JavaScriptMode());
+
+        // Drag and Drop
+        var $editor = $('#editor'),
+            $output = $('#output'),
+            $divisor = $('#divisor'),
+            documentWidth = $(document).width();
+
+        $('#divisor').draggable({
+            axis: "x",
+            cursor: "col-resize",
+            drag: function() {
+                console.log('resizing...');
+                var divisorPosition = $divisor.position().left;
+
+                $editor.css('width', divisorPosition);
+                $editor.find('.ace_content').css('width', divisorPosition);
+                $output.css('width', documentWidth - divisorPosition);
+            },
+        });
     </script>
 </body>
 </html>
