@@ -25,11 +25,16 @@
     			</div>
     			<h1>Coders!</h1>
                 <h2 id="intro">< share your code with us /> </h2>
-				<button class="start">Start now</button>
+				<button class="start" onclick="create_room()">Start now</button>
     		</div>
 	    </section>
     </body>
     <script type="text/javascript" src="{{ url_for('static', filename='vendor/js/TypingText.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/home/index.js') }}"></script>
 
+    <script>
+        function create_room(){
+            window.location.href = '/room/create';
+        }
+    </script>
 </html>
