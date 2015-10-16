@@ -58,7 +58,7 @@ var webSocket;
         });
 
         this.socket.on('run', function(data){
-            console.log(data);
+            console.log('Output: ' + data);
             room.writeOutput(data);
         });
     };
