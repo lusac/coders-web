@@ -7,7 +7,8 @@ from redis.sentinel import Sentinel
 from flask import Flask
 
 from home.views import home
-from room.views import room, socketio
+from room.views import room
+from room.events import socketio
 
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
 REDIS_PORT = os.getenv("REDIS_PORT", 6379)

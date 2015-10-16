@@ -2,10 +2,9 @@ import os
 import uuid
 import tarfile
 
-from flask import Blueprint, render_template, redirect, Response, session, current_app, request
-from flask.ext.socketio import SocketIO, emit, join_room
-
 from docker import Client
+
+from flask import Blueprint, render_template, redirect, Response, session, current_app, request
 
 IMAGE_NAME = os.getenv("IMAGE_NAME", None)
 DOCKER_ADDRESS = os.getenv("DOCKER_ADDRESS", "192.168.50.4:2375")
@@ -14,8 +13,6 @@ RUNNERS = {
     "nodejs": "node",
     "ruby": "ruby",
 }
-
-socketio = SocketIO()
 
 room = Blueprint(
     'room',
@@ -72,7 +69,7 @@ def run():
         command="tail -f /dev/null",
         detach=True
     )
-    response = d.start(container)
+
     with tarfile.open("code.tar.gz", "w:gz") as tar:
         tar.add(f.name, arcname=os.path.basename(f.name))
     t = open("code.tar.gz", "rb")
@@ -89,57 +86,3 @@ def run():
     )
     gen = d.exec_start(exec_id=exe['Id'], stream=True)
     return Response(gen, mimetype="text/plain")
-
-
-@socketio.on('disconnect', namespace='/socket')
-def test_disconnect():
-    user = session.get('user')
-    room = session.get('room')
-
-    cache = current_app.redis
-
-    total_user_cache_key = "%s:users" % room
-    users = int(cache.get(total_user_cache_key))
-    cache.set(total_user_cache_key, users - 1, 60 * 60 * 60 * 5)
-
-    emit('user_out', {'msg': user}, broadcast=True, room=room)
-
-
-@socketio.on("joined", namespace="/socket")
-def joined(msg):
-    room = session.get('room')
-    user = session.get('user')
-
-    cache = current_app.redis
-
-    total_user_cache_key = "%s:users" % room
-    users = int(cache.get(total_user_cache_key))
-    cache.set(total_user_cache_key, users + 1, 60 * 60 * 60 * 5)
-
-    join_room(room)
-    emit('status', {'msg': 'connected room - ' + room}, room=room)
-    emit('user_in', {'msg': user}, broadcast=True, room=room)
-
-
-@socketio.on("connect", namespace="/socket")
-def connect():
-    emit('conn', {'data': 'connected'})
-
-
-@socketio.on("broad", namespace="/socket")
-def rw(msg):
-    room = session.get('room')
-    cache = current_app.redis
-    cache.set('%s:content' % room, msg['text'], 60 * 60 * 60 * 5)
-
-    if not msg:
-        msg = {'data': 'readwrite broaded'}
-
-    room = session.get('room')
-    emit("rw", msg, broadcast=True, room=room)
-
-
-@socketio.on("run", namespace="/socket")
-def output(msg):
-    room = session.get('room')
-    emit("run", msg, broadcast=True, room=room)
