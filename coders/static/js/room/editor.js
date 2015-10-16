@@ -17,6 +17,7 @@
         var content = $("#editor").attr("data-content")
 
         this.aceEditor = ace.edit("editor");
+        this.aceEditor.$blockScrolling = Infinity
         this.aceEditor.setShowPrintMargin(false);
         this.aceEditor.setOption('wrap', 'free');
         this.aceEditor.setTheme("ace/theme/monokai");
