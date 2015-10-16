@@ -47,8 +47,9 @@
 
         console.log('Sending: ' + data.runner);
 
-        $.post(url, data, function() {
+        $.post(url, data, function(data) {
             console.log('Run - success');
+            self.$output.html(data);
         })
         .done(function() {
             console.log('Run - done');
