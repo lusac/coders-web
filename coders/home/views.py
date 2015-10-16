@@ -9,6 +9,12 @@ home = Blueprint(
     static_folder='static'
 )
 
+
 @home.route("/")
 def index():
     return render_template('index.html')
+
+
+@home.route("/developers")
+def developers():
+    return render_template('developers.html')
