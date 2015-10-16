@@ -5,11 +5,16 @@
         <script src="{{ url_for('static', filename='vendor/js/themes/theme-monokai.js') }}"></script>
         <script src="{{ url_for('static', filename='vendor/js/modes/mode-javascript.js') }}"></script>
         <script src="{{ url_for('static', filename='vendor/js/modes/mode-python.js') }}"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+        <script src="{{ url_for('static', filename='js/room/websocket.js') }}"></script>
 
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fonts/fonts.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/room/room.css') }}">
+
     </head>
 <body>
     <section id="header">
@@ -23,15 +28,14 @@
             </div>
         </div>
     </section>
-    <section id="section" data-room-ui="{{room_uuid}}">
+    <section id="section" data-room-ui="{{ room_uuid }}">
         <div id="editor" data-content="{{ content }}"></div>
         <div id="divisor"></div>
         <div id="output"></div>
     </section>
     <footer id="footer">
     </footer>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
-    <script src="{{ url_for('static', filename='js/room/websocket.js') }}"></script>
+
     <script src="{{ url_for('static', filename='js/room/editor.js') }}"></script>
     <script src="{{ url_for('static', filename='js/room/room.js') }}"></script>
     <script src="{{ url_for('static', filename='js/room/room_init.js') }}"></script>

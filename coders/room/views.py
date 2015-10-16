@@ -1,7 +1,7 @@
 import uuid
 
 from flask import Blueprint, render_template, redirect, session
-from flask.ext.socketio import SocketIO, emit
+from flask.ext.socketio import SocketIO, emit, join_room
 from flask import current_app
 
 socketio = SocketIO()
@@ -20,6 +20,9 @@ def index(uuid):
     if not cache.get(uuid):
         # return 404
         pass
+
+    session['room'] = uuid
+
     content = cache.get('%s:content' % uuid)
     return render_template("room.html", room_uuid=uuid, content=content)
 
@@ -28,23 +31,29 @@ def index(uuid):
 def create():
     room_uuid = uuid.uuid4().hex
 
-    session['room'] = room_uuid
-
     cache = current_app.redis
     cache.set(room_uuid, '')
     return redirect("/room/%s" % room_uuid)
 
 
-@socketio.on("connect", namespace="/socket")
-def connect():
-    emit('conn', {'data': 'connected'})
+# EVENTS
+
+
+@socketio.on("joined", namespace="/socket")
+def joined(msg):
+    room = session.get('room')
+    join_room(room)
+    emit('status', {'msg': 'connected room - ' + room}, room=room)
 
 
 @socketio.on("broad", namespace="/socket")
 def rw(msg):
-    uuid = session['room']
+    room = session.get('room')
     cache = current_app.redis
-    cache.set('%s:content' % uuid, msg['text'])
+    cache.set('%s:content' % room, msg['text'])
+
     if not msg:
         msg = {'data': 'readwrite broaded'}
-    emit("rw", msg, broadcast=True)
+
+    room = session.get('room')
+    emit("rw", msg, broadcast=True, room=room)

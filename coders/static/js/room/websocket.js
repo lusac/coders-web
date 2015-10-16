@@ -16,7 +16,12 @@
         var self = this;
 
         this.socket.on('connect', function() {
-            console.log('connect');
+            self.socket.emit('joined', {});
+            console.log('open socket');
+        });
+
+        this.socket.on('status', function(data) {
+            console.log('status: ' + data.msg);
         });
 
         this.socket.on('rw', function(data) {
@@ -36,4 +41,4 @@
 
 })(window, document, $);
 
-var webSocket = new WebSocket();
+webSocket = new WebSocket();
