@@ -63,15 +63,14 @@ var webSocket;
         });
 
         this.socket.on('language', function(data) {
-            if (typeof(data) == 'object') {
-                console.log('Language: ' + data.language);
-                editor.canSendLanguage = false;
-                editor.setLanguageHighlight(data.language);
-                editor.$comboLanguages.val(data.language);
-                setTimeout(function() {
-                    editor.canSendLanguage = true;
-                }, 500);
-            }
+            console.log('Language: ' + language);
+            editor.canSendLanguage = false;
+            editor.setLanguageHighlight(language);
+            editor.$comboLanguages.val(language);
+
+            setTimeout(function() {
+                editor.canSendLanguage = true;
+            }, 500);
         });
     };
 

@@ -38,16 +38,11 @@
     }
 
     Editor.prototype.setLanguageHighlight = function (language) {
-        var languageMode = ace.require('ace/mode/' + language).Mode,
-            msg = {
-                'id': self.id,
-                'language': language,
-            }
-
+        var languageMode = ace.require('ace/mode/' + language).Mode;
         this.aceEditor.session.setMode(new languageMode());
 
         if (this.canSendLanguage) {
-            webSocket.socket.emit('language', msg);
+            webSocket.socket.emit('language', language);
         }
     };
 
