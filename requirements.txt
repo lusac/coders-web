@@ -23,3 +23,4 @@ redis==2.10.3
 simplegeneric==0.8.1
 traitlets==4.0.0
 wsgiref==0.1.2
+docker-py
