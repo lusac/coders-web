@@ -53,21 +53,34 @@
 
     Room.prototype.runCode = function () {
         var self = this,
-            url = 'http://' + document.domain + ':' + location.port + '/room/run',
-            data = {'code': editor.aceEditor.getValue(), 'runner': editor.getLanguage()}
+            code = editor.aceEditor.getValue(),
+            language = editor.getLanguage();
 
-        console.log('Sending: ' + data.runner);
+        if (language !== 'javascript') {
+            var url = 'http://' + document.domain + ':' + location.port + '/room/run',
+                data = {'code': code, 'runner': language}
 
-        $.post(url, data, function(data) {
-            console.log('Run - success');
-            self.$output.html(data);
-        })
-        .done(function() {
-            console.log('Run - done');
-        })
-        .fail(function() {
-            console.log('Run - Error');
-        })
+            console.log('Sending: ' + data.runner);
+
+            $.post(url, data, function(data) {
+                console.log('Run - success');
+                self.writeOutput(data);
+            })
+            .done(function() {
+                console.log('Run - done');
+            })
+            .fail(function() {
+                console.log('Run - Error');
+            });
+        }
+        else {
+            console.log('Compiling: ' + language);
+            this.writeOutput(eval(code));
+        }
+    };
+
+    Room.prototype.writeOutput = function (string) {
+        this.$output.append('<br>' + string);
     };
 
     Room.prototype.convertToPercentage = function (width) {
