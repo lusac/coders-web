@@ -1,7 +1,8 @@
 # encoding: utf-8
 import os
-
 import redis
+
+from redis.sentinel import Sentinel
 
 from flask import Flask
 
@@ -10,7 +11,10 @@ from room.views import room, socketio
 
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
 REDIS_PORT = os.getenv("REDIS_PORT", 6379)
-DEBUG = os.getenv("DEBUG", False)
+REDIS_PASS = os.getenv("REDIS_PASS", None)
+REDIS_MASTER = os.getenv("REDIS_MASTER", None)
+
+DEBUG = os.getenv("DEBUG", True)
 PORT = int(os.getenv("PORT", '8000'))
 
 app = Flask(__name__)
@@ -20,7 +24,12 @@ app.config['SESSION_TYPE'] = 'redis'
 
 app.register_blueprint(home)
 app.register_blueprint(room)
-app.redis = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=0)
+
+if REDIS_HOST == 'localhost':
+    app.redis = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=0)
+else:
+    sentinel = Sentinel([(REDIS_HOST, REDIS_PORT)], socket_timeout=0.1, password=REDIS_PASS)
+    app.redis = sentinel.master_for(REDIS_MASTER, socket_timeout=0.1)
 
 app.debug = DEBUG
 
