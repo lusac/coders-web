@@ -56,6 +56,11 @@ var webSocket;
             self.users--;
             self.$footer.find('.watchers-count').text(self.users + ' watcher(s)');
         });
+
+        this.socket.on('run', function(data){
+            console.log(data);
+            room.writeOutput(data);
+        });
     };
 
     window.WebSocket = WebSocket;

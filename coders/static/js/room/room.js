@@ -64,10 +64,7 @@
 
             $.post(url, data, function(data) {
                 console.log('Run - success');
-                self.writeOutput(data);
-            })
-            .done(function() {
-                console.log('Run - done');
+                webSocket.socket.emit('run', data);
             })
             .fail(function() {
                 console.log('Run - Error');
@@ -77,10 +74,11 @@
             console.log('Compiling: ' + language);
 
             try {
-                this.writeOutput(eval(code));
+                webSocket.socket.emit('run', eval(code));
             } catch (e) {
-                this.writeOutput(e.message);
+                webSocket.socket.emit('run', e.message);
             }
+
         }
     };
 

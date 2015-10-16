@@ -137,3 +137,9 @@ def rw(msg):
 
     room = session.get('room')
     emit("rw", msg, broadcast=True, room=room)
+
+
+@socketio.on("run", namespace="/socket")
+def output(msg):
+    room = session.get('room')
+    emit("run", msg, broadcast=True, room=room)
