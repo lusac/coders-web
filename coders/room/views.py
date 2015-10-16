@@ -35,7 +35,7 @@ def index(uuid):
 
     session['room'] = uuid
 
-    content = cache.get('%s:content' % uuid)
+    content = cache.get('%s:content' % uuid) or ""
     return render_template("room.html", room_uuid=uuid, content=content)
 
 
