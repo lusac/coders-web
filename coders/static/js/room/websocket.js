@@ -41,7 +41,7 @@ var webSocket;
             if (typeof(data) == 'object') {
                 if (editor.id != data.id && data.type == 'code') {
                     editor.canSend = false;
-                    editor.aceEditor.setValue(data.text);
+                    editor.setValue(data.text);
                     editor.canSend = true;
                 }
             }

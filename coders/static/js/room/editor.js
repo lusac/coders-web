@@ -22,9 +22,13 @@
         this.aceEditor.setShowPrintMargin(false);
         this.aceEditor.setOption('wrap', 'free');
         this.aceEditor.setTheme("ace/theme/monokai");
-        this.aceEditor.setValue(content);
         this.$editor.css('font-size', '13px');
+        this.setValue(content);
         this.setLanguageHighlight('javascript');
+    };
+
+    Editor.prototype.setValue = function (val) {
+        this.aceEditor.setValue(val, -1);
     };
 
     Editor.prototype.getLanguage = function () {
