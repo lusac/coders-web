@@ -56,3 +56,9 @@ def rw(msg):
 def output(msg):
     room = session.get('room')
     emit("run", msg, broadcast=True, room=room)
+
+
+@socketio.on('language', namespace='/socket')
+def language(msg):
+    room = session.get('room')
+    emit('language', msg, broadcast=True, room=room)

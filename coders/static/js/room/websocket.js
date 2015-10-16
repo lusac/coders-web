@@ -47,19 +47,31 @@ var webSocket;
             }
         });
 
-        this.socket.on('user_in', function(data){
+        this.socket.on('user_in', function(data) {
             self.users++;
             self.$footer.find('.watchers-count').text(self.users + ' watcher(s)');
         });
 
-        this.socket.on('user_out', function(data){
+        this.socket.on('user_out', function(data) {
             self.users--;
             self.$footer.find('.watchers-count').text(self.users + ' watcher(s)');
         });
 
-        this.socket.on('run', function(data){
+        this.socket.on('run', function(data) {
             console.log('Output: ' + data);
             room.writeOutput(data);
+        });
+
+        this.socket.on('language', function(data) {
+            if (typeof(data) == 'object') {
+                console.log('Language: ' + data.language);
+                editor.canSendLanguage = false;
+                editor.setLanguageHighlight(data.language);
+                editor.$comboLanguages.val(data.language);
+                setTimeout(function() {
+                    editor.canSendLanguage = true;
+                }, 500);
+            }
         });
     };
 

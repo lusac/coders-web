@@ -8,6 +8,7 @@
         this.aceEditor;
         this.id = this.guid();
         this.canSend = true;
+        this.canSendLanguage = true;
         this.$comboLanguages = $('#combo-language');
 
         this.init();
@@ -37,8 +38,17 @@
     }
 
     Editor.prototype.setLanguageHighlight = function (language) {
-        var languageMode = ace.require('ace/mode/' + language).Mode;
+        var languageMode = ace.require('ace/mode/' + language).Mode,
+            msg = {
+                'id': self.id,
+                'language': language,
+            }
+
         this.aceEditor.session.setMode(new languageMode());
+
+        if (this.canSendLanguage) {
+            webSocket.socket.emit('language', msg);
+        }
     };
 
     Editor.prototype.bindEvents = function () {
