@@ -43,7 +43,9 @@
 
     Room.prototype.runCode = function () {
         var url = 'http://' + document.domain + ':' + location.port + '/room/run',
-            data = {'code': editor.aceEditor.getValue(), 'runner': 'python'}
+            data = {'code': editor.aceEditor.getValue(), 'runner': editor.getLanguage()}
+
+        console.log('Sending: ' + data.runner);
 
         $.post(url, data, function() {
             console.log('Run - success');
