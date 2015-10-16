@@ -11,7 +11,7 @@ from room.views import room, socketio
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
 REDIS_PORT = os.getenv("REDIS_PORT", 6379)
 DEBUG = os.getenv("DEBUG", False)
-PORT = os.getenv("PORT", 8000)
+PORT = int(os.getenv("PORT", '8000'))
 
 app = Flask(__name__)
 
