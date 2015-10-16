@@ -1,13 +1,16 @@
 /* global $ */
+var webSocket;
 
 (function (window, document, $) {
     'use strict';
 
     var WebSocket = function WebSocket() {
-        this.users = 0;
-        this.$footer = $('#footer');
-        this.init();
-        this.bindEvents();
+        if (webSocket === undefined){
+            this.users = 0;
+            this.$footer = $('#footer');
+            this.init();
+            this.bindEvents();
+        }
     };
 
     WebSocket.prototype.init = function () {
