@@ -7,13 +7,13 @@
         this.aceEditor;
         this.id = this.guid();
         this.canSend = true;
+        this.$comboLanguages = $('#combo-language');
 
         this.init();
         this.bindEvents();
     };
 
     Editor.prototype.init = function () {
-        var JavaScriptMode = ace.require("ace/mode/javascript").Mode;
         var content = $("#editor").attr("data-content")
 
         this.aceEditor = ace.edit("editor");
@@ -21,8 +21,13 @@
         this.aceEditor.setShowPrintMargin(false);
         this.aceEditor.setOption('wrap', 'free');
         this.aceEditor.setTheme("ace/theme/monokai");
-        this.aceEditor.session.setMode(new JavaScriptMode());
+        this.setLanguageHighlight('javascript');
         this.aceEditor.setValue(content);
+    };
+
+    Editor.prototype.setLanguageHighlight = function (language) {
+        var languageMode = ace.require('ace/mode/' + language).Mode;
+        this.aceEditor.session.setMode(new languageMode());
     };
 
     Editor.prototype.bindEvents = function () {
@@ -37,6 +42,12 @@
                 }
                 webSocket.socket.emit('broad', msg);
             }
+        });
+
+        this.$comboLanguages.on('change', function() {
+            var language = $(this).val();
+            if (language == 'nodejs') language = 'javascript';
+            self.setLanguageHighlight(language);
         });
     };
 

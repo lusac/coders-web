@@ -44,9 +44,9 @@
     <section id="section" data-room-ui="{{ room_uuid }}">
         <div id="editor-container">
             <div id="editor" data-content="{{ content }}"></div>
-            <select class="combo-language">
-              <option value="javascript">Javascript</option>
-              <option value="node">Node</option>
+            <select id="combo-language" class="combo-language">
+              <option value="nodejs">Javascript</option>
+              <option value="nodejs">Node</option>
               <option value="python">Python</option>
               <option value="ruby">Ruby</option>
             </select>
@@ -75,6 +75,7 @@
     <script src="{{ url_for('static', filename='vendor/js/themes/theme-monokai.js') }}"></script>
     <script src="{{ url_for('static', filename='vendor/js/modes/mode-javascript.js') }}"></script>
     <script src="{{ url_for('static', filename='vendor/js/modes/mode-python.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/js/modes/mode-ruby.js') }}"></script>
 
     <script src="{{ url_for('static', filename='js/room/editor.js') }}"></script>
     <script src="{{ url_for('static', filename='js/room/room.js') }}"></script>
