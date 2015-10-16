@@ -20,7 +20,7 @@ room = Blueprint(
     template_folder="templates",
     static_folder="static",
 )
-
+CACHE_TIMEOUT = 60 * 60 * 60 * 4
 
 @room.errorhandler(404)
 @room.route("/room/<string:room_uuid>")
@@ -46,8 +46,8 @@ def create():
     room_uuid = uuid.uuid4().hex
 
     cache = current_app.redis
-    cache.set("%s:room" % room_uuid, room_uuid, 60 * 60 * 60 * 4)
-    cache.set("%s:users" % room_uuid, 0, 60 * 60 * 60 * 4)
+    cache.set("%s:room" % room_uuid, room_uuid, CACHE_TIMEOUT)
+    cache.set("%s:users" % room_uuid, 0, CACHE_TIMEOUT)
 
     return redirect("/room/%s" % room_uuid)
 
