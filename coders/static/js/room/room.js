@@ -75,7 +75,12 @@
         }
         else {
             console.log('Compiling: ' + language);
-            this.writeOutput(eval(code));
+
+            try {
+                this.writeOutput(eval(code));
+            } catch (e) {
+                this.writeOutput(e.message);
+            }
         }
     };
 
