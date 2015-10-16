@@ -36,10 +36,8 @@
         var documentWidth = $(document).width(),
             divisorPosition = this.$divisor.position().left - 5;
 
-        if ((divisorPosition < 150) || (divisorPosition > documentWidth - 150)) {
-            console.log("nao deixo");
-            return false;
-        }
+        if ((divisorPosition < 150) || (divisorPosition > documentWidth - 150))
+            return;
 
         this.$editor.css('width', divisorPosition)
         this.$editor.find('.ace_content').css('width', divisorPosition);
