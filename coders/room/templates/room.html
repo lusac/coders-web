@@ -33,13 +33,30 @@
             </div>
         </div>
     </section>
+
     <section id="section" data-room-ui="{{ room_uuid }}">
         <div id="editor" data-content="{{ content }}"></div>
         <div id="divisor"></div>
         <div id="output"></div>
     </section>
-    <footer id="footer">
-    </footer>
+
+    <footer id="footer"></footer>
+
+    <span class="overlay">
+        <h3 class="overlay-text">Connecting to the room<span class="overlay-dot"></span></h3>
+        <script>
+            var $dots = $('.overlay-dot');
+            setInterval(function() {
+                if (($dots.text() + '.').length >= 4) {
+                    $dots.html('');
+                } else {
+                    $dots.append('.');
+                }
+
+                console.log(dots);
+            }, 500);
+        </script>
+    </span>
 
     <script src="{{ url_for('static', filename='js/room/editor.js') }}"></script>
     <script src="{{ url_for('static', filename='js/room/room.js') }}"></script>

@@ -22,6 +22,7 @@
 
         this.socket.on('status', function(data) {
             console.log('status: ' + data.msg);
+            $('.overlay').hide();
         });
 
         this.socket.on('rw', function(data) {
