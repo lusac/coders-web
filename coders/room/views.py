@@ -26,17 +26,21 @@ room = Blueprint(
 )
 
 
-@room.route("/room/<string:uuid>")
-def index(uuid):
+@room.route("/room/<string:room_uuid>")
+def index(room_uuid):
     cache = current_app.redis
-    if not cache.get(uuid):
+    if not cache.get(room_uuid):
         # return 404
         pass
 
-    session['room'] = uuid
+    session['room'] = room_uuid
+    users = int(cache.get("%s:users" % room_uuid))
 
-    content = cache.get('%s:content' % uuid) or ""
-    return render_template("room.html", room_uuid=uuid, content=content)
+    content = cache.get('%s:content' % room_uuid) or ""
+    return render_template("room.html",
+                           room_uuid=room_uuid,
+                           content=content,
+                           users=users)
 
 
 @room.route("/room/create")
@@ -45,6 +49,7 @@ def create():
 
     cache = current_app.redis
     cache.set(room_uuid, '')
+    cache.set("%s:users" % room_uuid, 0)
     return redirect("/room/%s" % room_uuid)
 
 
@@ -82,12 +87,34 @@ def run(code, runner):
     gen = d.exec_start(exec_id=exe['Id'], stream=True)
     return Response(gen, mimetype="text/plain")
 
+@socketio.on('disconnect', namespace='/socket')
+def test_disconnect():
+    user = session.get('user')
+    room = session.get('room')
+
+    cache = current_app.redis
+
+    total_user_cache_key = "%s:users" % room
+    users = int(cache.get(total_user_cache_key))
+    cache.set(total_user_cache_key, users - 1)
+
+    emit('user_out', {'msg': user}, broadcast=True, room=room)
+
 
 @socketio.on("joined", namespace="/socket")
 def joined(msg):
     room = session.get('room')
+    user = session.get('user')
+
+    cache = current_app.redis
+
+    total_user_cache_key = "%s:users" % room
+    users = int(cache.get(total_user_cache_key))
+    cache.set(total_user_cache_key, users + 1)
+
     join_room(room)
     emit('status', {'msg': 'connected room - ' + room}, room=room)
+    emit('user_in', {'msg': user}, broadcast=True, room=room)
 
 
 @socketio.on("connect", namespace="/socket")

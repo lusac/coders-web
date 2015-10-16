@@ -4,6 +4,8 @@
     'use strict';
 
     var WebSocket = function WebSocket() {
+        this.users = 0;
+        this.$footer = $('#footer');
         this.init();
         this.bindEvents();
     };
@@ -37,6 +39,16 @@
                     editor.canSend = true;
                 }
             }
+        });
+
+        this.socket.on('user_in', function(data){
+            self.users++;
+            self.$footer.attr('data-users', self.users);
+        });
+
+        this.socket.on('user_out', function(data){
+            self.users--;
+            self.$footer.attr('data-users', self.users);
         });
     };
 
