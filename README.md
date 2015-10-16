@@ -9,4 +9,4 @@ open source room to interactive code
 - [ ] 404 when room does not exist
 - [ ] improve socket performance
 - [ ] show url to share page
-- [ ] Load on room page
+- [x] Load on room page
