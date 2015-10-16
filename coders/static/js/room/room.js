@@ -9,7 +9,7 @@
 
     Room.prototype.init = function () {
         this.$editor = $('#editor');
-        this.$output = $('#output');
+        this.$output = $('#output-container');
         this.$divisor = $('#divisor');
         this.$run = $('#run');
 
