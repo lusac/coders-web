@@ -7,7 +7,7 @@ var webSocket;
     var WebSocket = function WebSocket() {
         if (webSocket === undefined){
             this.$footer = $('#footer');
-            this.users = this.$footer.attr('data-users');
+            this.users = parseInt(this.$footer.attr('data-users'), 10);
             this.init();
             this.bindEvents();
         }
