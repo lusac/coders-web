@@ -4,11 +4,6 @@
         <title>Coders - {{ room_uuid }}</title>
         <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/fav.ico') }}" />
 
-        <script src="{{ url_for('static', filename='vendor/js/ace.js') }}"></script>
-        <script src="{{ url_for('static', filename='vendor/js/themes/theme-monokai.js') }}"></script>
-        <script src="{{ url_for('static', filename='vendor/js/modes/mode-javascript.js') }}"></script>
-        <script src="{{ url_for('static', filename='vendor/js/modes/mode-python.js') }}"></script>
-
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
@@ -57,6 +52,11 @@
             }, 500);
         </script>
     </span>
+
+    <script src="{{ url_for('static', filename='vendor/js/ace.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/js/themes/theme-monokai.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/js/modes/mode-javascript.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/js/modes/mode-python.js') }}"></script>
 
     <script src="{{ url_for('static', filename='js/room/editor.js') }}"></script>
     <script src="{{ url_for('static', filename='js/room/room.js') }}"></script>
