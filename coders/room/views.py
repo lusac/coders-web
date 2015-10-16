@@ -47,8 +47,8 @@ def create():
     room_uuid = uuid.uuid4().hex
 
     cache = current_app.redis
-    cache.set(room_uuid, '')
-    cache.set("%s:users" % room_uuid, 0)
+    cache.set(room_uuid, '', 60 * 60 * 60 * 5)
+    cache.set("%s:users" % room_uuid, 60 * 60 * 60 * 5)
     return redirect("/room/%s" % room_uuid)
 
 
@@ -100,7 +100,7 @@ def test_disconnect():
 
     total_user_cache_key = "%s:users" % room
     users = int(cache.get(total_user_cache_key))
-    cache.set(total_user_cache_key, users - 1)
+    cache.set(total_user_cache_key, users - 1, 60 * 60 * 60 * 5)
 
     emit('user_out', {'msg': user}, broadcast=True, room=room)
 
@@ -114,7 +114,7 @@ def joined(msg):
 
     total_user_cache_key = "%s:users" % room
     users = int(cache.get(total_user_cache_key))
-    cache.set(total_user_cache_key, users + 1)
+    cache.set(total_user_cache_key, users + 1, 60 * 60 * 60 * 5)
 
     join_room(room)
     emit('status', {'msg': 'connected room - ' + room}, room=room)
@@ -130,7 +130,7 @@ def connect():
 def rw(msg):
     room = session.get('room')
     cache = current_app.redis
-    cache.set('%s:content' % room, msg['text'])
+    cache.set('%s:content' % room, msg['text'], 60 * 60 * 60 * 5)
 
     if not msg:
         msg = {'data': 'readwrite broaded'}
