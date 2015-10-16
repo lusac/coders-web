@@ -12,6 +12,7 @@
         this.$output = $('#output-container');
         this.$divisor = $('#divisor');
         this.$run = $('#run');
+        this.documentWidth = $(document).width();
 
         this.bindEvents();
     };
@@ -25,6 +26,10 @@
             drag: function() {
                 self.resizing();
             },
+            stop: function( event, ui ) {
+                var width = parseInt($(this).css("left"), 10);
+                $(this).css('left', self.convertToPercentage(width));
+            }
         });
 
         this.$run.on('click', function() {
@@ -39,9 +44,9 @@
         if ((divisorPosition < 150) || (divisorPosition > documentWidth - 150))
             return;
 
-        this.$editor.css('width', divisorPosition)
-        this.$editor.find('.ace_content').css('width', divisorPosition);
-        this.$output.css('width', documentWidth - divisorPosition);
+        this.$editor.css('width', this.convertToPercentage(divisorPosition))
+        this.$editor.find('.ace_content').css('width', this.convertToPercentage(divisorPosition));
+        this.$output.css('width', this.convertToPercentage(this.documentWidth - divisorPosition));
 
         throttledEditorResize();
     };
@@ -63,6 +68,10 @@
         .fail(function() {
             console.log('Run - Error');
         })
+    };
+
+    Room.prototype.convertToPercentage = function (width) {
+        return (width * 100) / this.documentWidth + '%';
     };
 
     window.Room = Room;
