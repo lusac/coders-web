@@ -134,9 +134,9 @@ function start_modal(){
 }
 
 function update_url() {
-    var shareUrl = document.getElementById("shareUrl");
-    shareUrl.value = window.location.href;
-    shareUrl.select().focus();
+    var $shareUrl = $("#shareUrl");
+    $shareUrl.val(window.location.href);
+    $shareUrl.select().focus();
 }
 
 $('.share-footer').click(function() {
