@@ -49,12 +49,12 @@ var webSocket;
 
         this.socket.on('user_in', function(data){
             self.users++;
-            self.$footer.find('span').text(self.users + ' watcher(s)');
+            self.$footer.find('.watchers-count').text(self.users + ' watcher(s)');
         });
 
         this.socket.on('user_out', function(data){
             self.users--;
-            self.$footer.find('span').text(self.users + ' watcher(s)');
+            self.$footer.find('.watchers-count').text(self.users + ' watcher(s)');
         });
     };
 

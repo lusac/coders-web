@@ -126,13 +126,17 @@ function start_modal(){
     var top = ($(window).height() / 2) - ( $(id).height() );
 
     $(id).css({'top':top,'left':left});
-    $(id).show();
+    $(id).show("slow");
     update_url();
 };
 
 function update_url() {
     document.getElementById("shareUrl").value = window.location.href;
 }
+
+$('.share-footer').click(function() {
+    start_modal();
+});
 
 $("#mask").click( function(){
     $(this).hide();
@@ -143,4 +147,3 @@ $('.close-btn').click(function(){
     $("#mask").hide();
     $(".window").hide();
 });
-

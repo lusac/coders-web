@@ -91,6 +91,8 @@
 #footer span {
     color: #999;
     font-family: 'Lato', sans-serif;
+    position: relative;
+    top: -1px;
 }
 
 #footer .watchers {
@@ -100,10 +102,29 @@
     right: 15px;
 }
 
+#footer .share-footer {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 15px;
+    cursor: pointer;
+}
+
+#footer .share-footer span {
+    text-transform: uppercase;
+}
+
+#footer .share-footer-image {
+    width: 20px;
+    top: 3px;
+    position: relative;
+    margin-left: 10px;
+}
+
 #footer .watchers #Capa_1 {
     position: absolute;
     left: -30px;
-    top: 1px;
+    top: 0;
 }
 
 #output-container,
