@@ -43,6 +43,10 @@
     text-align: center;
 }
 
+button:focus {
+    outline: none;
+}
+
 .run-button:hover {
     cursor: pointer;
     background-color: #007095;

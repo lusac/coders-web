@@ -22,6 +22,10 @@ button {
     text-transform: uppercase;
 }
 
+button:focus {
+    outline: none;
+}
+
 .intro {
 	text-align: center;
 }
