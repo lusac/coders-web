@@ -167,3 +167,7 @@ $('.close-btn').click(function(){
     $("#mask").hide();
     $(".window").hide();
 });
+
+$("#shareUrl").click(function() {
+    this.select();
+});
