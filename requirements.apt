@@ -1,2 +1,3 @@
 libevent-dev
 python-all-dev
+python-gevent
