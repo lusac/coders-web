@@ -28,7 +28,10 @@ var webSocket;
         this.socket.on('status', function(data) {
             console.log('status: ' + data.msg);
             $('.overlay').hide();
-            start_modal();
+
+            if (self.users === 0) {
+                start_modal();
+            }
 
         });
 
