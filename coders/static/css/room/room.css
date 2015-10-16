@@ -239,10 +239,16 @@
 }
 
 .combo-language {
+    background-color: inherit;
     z-index: 10;
     right: 20px;
     bottom: 20px;
     position: absolute;
+    width: 30%;
+    height: 35px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    color: #FFF;
 }
 
 
