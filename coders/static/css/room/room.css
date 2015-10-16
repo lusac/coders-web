@@ -260,6 +260,27 @@ button:focus {
     height: 30px;
 }
 
+#copy-button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+#copy-button:hover {
+    cursor: pointer;
+}
+
+.button {
+    font-family: 'Lato', sans-serif;
+    background: #25B7D3;
+    border: none;
+    border-radius: 7px;
+    padding: 1rem 0;
+    width: 13rem;
+    text-transform: uppercase;
+}
+
 .editor-container {
     position: relative;
 }

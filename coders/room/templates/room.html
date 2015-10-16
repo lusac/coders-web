@@ -22,6 +22,7 @@
                 <h2>Share this room with your friends</h2>
             </div>
             <input id="shareUrl" type="text" name="url" value="">
+            <button id="copy-button" class="button" data-clipboard-text="" title="Click to copy me">Copy to Clipboard</button>
         </div>
         <!-- mascara para cobrir o site -->
 
@@ -117,5 +118,7 @@
     <script src="{{ url_for('static', filename='js/room/room.js') }}"></script>
     <script src="{{ url_for('static', filename='js/room/websocket.js') }}"></script>
     <script src="{{ url_for('static', filename='js/room/room_init.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='vendor/js/zeroclipboard/ZeroClipboard.min.js') }}"></script>
 </body>
 </html>
