@@ -44,7 +44,7 @@
         if ((divisorPosition < 150) || (divisorPosition > documentWidth - 150))
             return;
 
-        this.$editor.css('width', this.convertToPercentage(divisorPosition))
+        this.$editor.css('width', this.convertToPercentage(divisorPosition));
         this.$editor.find('.ace_content').css('width', this.convertToPercentage(divisorPosition));
         this.$output.css('width', this.convertToPercentage(this.documentWidth - divisorPosition));
 
@@ -58,7 +58,7 @@
 
         if (language !== 'javascript') {
             var url = 'http://' + document.domain + ':' + location.port + '/room/run',
-                data = {'code': code, 'runner': language}
+                data = {'code': code, 'runner': language};
 
             console.log('Sending: ' + data.runner);
 
@@ -126,10 +126,12 @@ function start_modal(){
     $(id).css({'top':top,'left':left});
     $(id).show("slow");
     update_url();
-};
+}
 
 function update_url() {
-    document.getElementById("shareUrl").value = window.location.href;
+    var shareUrl = document.getElementById("shareUrl");
+    shareUrl.value = window.location.href;
+    shareUrl.select().focus();
 }
 
 $('.share-footer').click(function() {
