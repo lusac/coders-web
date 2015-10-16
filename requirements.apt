@@ -1,3 +1,5 @@
 libevent-dev
 python-all-dev
 python-gevent
+libncurses5-dev 
+libffi-dev
