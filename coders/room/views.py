@@ -72,7 +72,7 @@ def run():
         command="tail -f /dev/null",
         detach=True
     )
-
+    response = d.start(container)
     with tarfile.open("code.tar.gz", "w:gz") as tar:
         tar.add(f.name, arcname=os.path.basename(f.name))
     t = open("code.tar.gz", "rb")
