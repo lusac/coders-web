@@ -1,9 +1,8 @@
+import os
 import uuid
 import tarfile
-import os
 
-from flask import Blueprint, render_template, redirect, Response, session
-from flask import current_app
+from flask import Blueprint, render_template, redirect, Response, session, current_app, request
 from flask.ext.socketio import SocketIO, emit, join_room
 
 from docker import Client
@@ -54,9 +53,13 @@ def create():
 
 
 @room.route("/room/run", methods=['POST'])
-def run(code, runner):
+def run():
+    code = request.form.get('code')
+    runner = request.form.get('runner')
+
     if not code:
         return "you should send a code!", 500
+
     f = open("code", 'w')
     f.write(code)
     f.close()
@@ -86,6 +89,7 @@ def run(code, runner):
     )
     gen = d.exec_start(exec_id=exe['Id'], stream=True)
     return Response(gen, mimetype="text/plain")
+
 
 @socketio.on('disconnect', namespace='/socket')
 def test_disconnect():
