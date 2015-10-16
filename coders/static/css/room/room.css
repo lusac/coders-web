@@ -121,7 +121,11 @@
 }
 
 #output-container {
+    color: #FFF;
+    font-size: 15px;
     background: #000;
+    padding: 15px 20px;
+    font-family: monospace;
 }
 
 #divisor {
@@ -217,4 +221,13 @@
     right: 20px;
     bottom: 20px;
     position: absolute;
+}
+
+
+.ace_gutter,
+.ace_scroller {
+    padding-top: 15px;
+}
+.ace_gutter-active-line {
+    margin-top: 15px;
 }

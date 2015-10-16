@@ -4,6 +4,7 @@
     'use strict';
 
     var Editor = function Editor() {
+        this.$editor = $("#editor");
         this.aceEditor;
         this.id = this.guid();
         this.canSend = true;
@@ -14,7 +15,7 @@
     };
 
     Editor.prototype.init = function () {
-        var content = $("#editor").attr("data-content")
+        var content = this.$editor.attr("data-content")
 
         this.aceEditor = ace.edit("editor");
         this.aceEditor.$blockScrolling = Infinity
@@ -22,6 +23,7 @@
         this.aceEditor.setOption('wrap', 'free');
         this.aceEditor.setTheme("ace/theme/monokai");
         this.aceEditor.setValue(content);
+        this.$editor.css('font-size', '13px');
         this.setLanguageHighlight('javascript');
     };
 
