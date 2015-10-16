@@ -134,11 +134,16 @@
     height: 100%;
     display: block;
     position: relative;
+    padding-top: 10px;
 }
 
 #editor {
     width: 100%;
     height: 100%;
+}
+
+#editor-container {
+    background: rgb(39, 40, 34);
 }
 
 #output-container {
@@ -249,13 +254,4 @@
     font-family: 'Lato', sans-serif;
     font-size: 14px;
     color: #FFF;
-}
-
-
-.ace_gutter,
-.ace_scroller {
-    padding-top: 15px;
-}
-.ace_gutter-active-line {
-    margin-top: 15px;
 }
