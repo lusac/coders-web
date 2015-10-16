@@ -12,6 +12,7 @@
         this.$output = $('#output-container');
         this.$divisor = $('#divisor');
         this.$run = $('#run');
+        this.$runElements = $('.run-container').children();
         this.documentWidth = $(document).width();
 
         this.bindEvents();
@@ -61,6 +62,8 @@
                 data = {'code': code, 'runner': language};
 
             console.log('Sending: ' + data.runner);
+            self.$runElements.toggleClass('active');
+            editor.aceEditor.setReadOnly(true);
 
             $.post(url, data, function(data) {
                 console.log('Run - success');
@@ -72,7 +75,7 @@
         }
         else {
             console.log('Compiling: ' + language);
-
+            self.$runElements.toggleClass('active');
             try {
                 webSocket.socket.emit('run', eval(code));
             } catch (e) {
@@ -83,6 +86,8 @@
     };
 
     Room.prototype.writeOutput = function (string) {
+        editor.aceEditor.setReadOnly(false);
+        this.$runElements.toggleClass('active');
         this.$output.html(string);
     };
 

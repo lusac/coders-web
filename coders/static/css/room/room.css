@@ -25,12 +25,17 @@
     margin-left: 10px;
 }
 
-.run {
+.run, .running {
     text-align: right;
     height: 30px;
+    display: none;
 }
 
-.run-button {
+.run.active, .running.active {
+    display: block;
+}
+
+.run-button, .running-button {
     width: 7rem;
     height: 100%;
     border: none;
@@ -41,6 +46,18 @@
     color: #FFF;
     font-family: 'Lato', sans-serif;
     text-align: center;
+}
+
+.running-button {
+    background-color: transparent;
+    border: 2px solid #CCC;
+    color: #CCC;
+}
+
+.running-button img {
+    position: relative;
+    width: 13px;
+    right: 7px;
 }
 
 button:focus {
