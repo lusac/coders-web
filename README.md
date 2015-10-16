@@ -9,8 +9,8 @@ open source room to interactive code
 - [x] show url to share page
 - [x] Load on room page
 - [x] 404 when room does not exist
+- [x] send user language change
 - [ ] show connection status
-- [ ] sendo user language change
 
 plus!
 - [ ] improve socket performance
