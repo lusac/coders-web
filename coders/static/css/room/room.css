@@ -276,3 +276,7 @@ button:focus {
     font-size: 14px;
     color: #FFF;
 }
+
+.combo-language:focus {
+    outline: none;
+}
