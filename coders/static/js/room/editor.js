@@ -16,7 +16,8 @@
     };
 
     Editor.prototype.init = function () {
-        var content = this.$editor.attr("data-content")
+        var content = this.$editor.attr("data-content"),
+            language = this.$editor.attr("data-lang");
 
         this.aceEditor = ace.edit("editor");
         this.aceEditor.$blockScrolling = Infinity
@@ -25,7 +26,7 @@
         this.aceEditor.setTheme("ace/theme/monokai");
         this.$editor.css('font-size', '13px');
         this.setValue(content);
-        this.setLanguageHighlight('javascript');
+        this.setLanguageHighlight(language);
     };
 
     Editor.prototype.setValue = function (val) {
