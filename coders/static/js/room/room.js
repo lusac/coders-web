@@ -42,14 +42,14 @@
 
 function start_modal(){
 
-    var id = "#janela1";
+    var id = "#modal-window";
 
-    var alturaTela = $(document).height();
-    var larguraTela = $(window).width();
+    var windowHeight = $(document).height();
+    var windowWidth = $(window).width();
 
     //colocando o fundo preto
-    $('#mascara').css({'width':larguraTela,'height':alturaTela});
-    $('#mascara').fadeTo("slow",0.8);
+    $('#mask').css({'width':windowWidth,'height':windowHeight});
+    $('#mask').fadeTo("slow",0.8);
 
     var left = ($(window).width() /2) - ( $(id).width() / 2 );
     var top = ($(window).height() / 2) - ( $(id).height() );
@@ -63,13 +63,13 @@ function update_url() {
     document.getElementById("shareUrl").value = window.location.href;
 }
 
-$("#mascara").click( function(){
+$("#mask").click( function(){
     $(this).hide();
     $(".window").hide();
 });
 
-$('.fechar').click(function(){
-    $("#mascara").hide();
+$('.close-btn').click(function(){
+    $("#mask").hide();
     $(".window").hide();
 });
 

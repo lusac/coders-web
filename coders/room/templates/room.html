@@ -15,8 +15,8 @@
     </head>
 <body>
     <section id="modal">
-        <div class="window" id="janela1">
-            <span class="fechar">X</span>
+        <div class="window" id="modal-window">
+            <span class="close-btn">X</span>
             <img class="share-image" src="{{ url_for('static', filename='img/icon.png') }}" />
             <div class="share-text">
                 <h2>Share this room with your friends</h2>
@@ -24,7 +24,7 @@
             <input id="shareUrl" type="text" name="url" value="">
         </div>
         <!-- mascara para cobrir o site -->
-        <div id="mascara"></div>
+        <div id="mask"></div>
     </section>
     <section id="header">
         <div class="coders-header">

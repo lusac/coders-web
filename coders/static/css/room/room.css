@@ -148,7 +148,7 @@
     border-radius:10px;
 }
 
-#mascara{
+#mask {
     display:none;
     position:absolute;
     left:0;
@@ -157,11 +157,12 @@
     background-color:#000;
 }
 
-.fechar {
+.close-btn {
     display:block;
     right: 3%;
     top: 5%;
     position: absolute;
+    cursor: pointer;
 }
 
 .share-image {
