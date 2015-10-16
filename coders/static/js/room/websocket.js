@@ -63,10 +63,10 @@ var webSocket;
         });
 
         this.socket.on('language', function(data) {
-            console.log('Language: ' + language);
+            console.log('Language: ' + data);
             editor.canSendLanguage = false;
-            editor.setLanguageHighlight(language);
-            editor.$comboLanguages.val(language);
+            editor.setLanguageHighlight(data);
+            editor.$comboLanguages.val(data);
 
             setTimeout(function() {
                 editor.canSendLanguage = true;

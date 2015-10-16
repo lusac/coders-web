@@ -50,11 +50,11 @@
 
     <section id="section" data-room-ui="{{ room_uuid }}">
         <div id="editor-container">
-            <div id="editor" data-content="{{ content }}"></div>
+            <div id="editor" data-content="{{ content }}" data-lang="{{ language }}"></div>
             <select id="combo-language" class="combo-language">
-              <option value="javascript">Javascript</option>
-              <option value="python">Python</option>
-              <option value="ruby">Ruby</option>
+            {% for lang in ['javascript', 'python', 'ruby'] %}
+              <option value="{{ lang }}" {% if lang == language %}selected="selected"{% endif %}>{{ lang|capitalize }}</option>
+          {% endfor %}
             </select>
         </div>
         <div id="divisor"></div>

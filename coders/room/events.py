@@ -61,4 +61,7 @@ def output(msg):
 @socketio.on('language', namespace='/socket')
 def language(msg):
     room = session.get('room')
+    cache = current_app.redis
+    cache.set("%s:language" % room, msg, 60 * 60 * 60 * 4)
+
     emit('language', msg, broadcast=True, room=room)

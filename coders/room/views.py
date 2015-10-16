@@ -31,12 +31,14 @@ def index(room_uuid):
 
     session['room'] = room_uuid
     users = int(cache.get("%s:users" % room_uuid))
-
     content = cache.get('%s:content' % room_uuid) or ""
+    language = cache.get('%s:language' % room_uuid) or "javascript"
+
     return render_template("room.html",
                            room_uuid=room_uuid,
                            content=content,
-                           users=users)
+                           users=users,
+                           language=language)
 
 
 @room.route("/room/create")

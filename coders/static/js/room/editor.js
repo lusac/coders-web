@@ -40,10 +40,6 @@
     Editor.prototype.setLanguageHighlight = function (language) {
         var languageMode = ace.require('ace/mode/' + language).Mode;
         this.aceEditor.session.setMode(new languageMode());
-
-        if (this.canSendLanguage) {
-            webSocket.socket.emit('language', language);
-        }
     };
 
     Editor.prototype.bindEvents = function () {
@@ -61,7 +57,11 @@
         });
 
         this.$comboLanguages.on('change', function() {
-            self.setLanguageHighlight(self.getLanguage());
+            var language = self.getLanguage();
+            self.setLanguageHighlight(language);
+            if (self.canSendLanguage) {
+                webSocket.socket.emit('language', language);
+            }
         });
     };
 
