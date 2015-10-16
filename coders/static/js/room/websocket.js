@@ -60,6 +60,7 @@ var webSocket;
         this.socket.on('begin_run', function() {
             console.log('begin run');
             room.$runElements.toggleClass('active');
+            editor.aceEditor.setReadOnly(true);
         });
 
         this.socket.on('end_run', function(data) {
