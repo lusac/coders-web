@@ -57,10 +57,16 @@ var webSocket;
             self.$footer.find('.watchers-count').text(self.users + ' watcher(s)');
         });
 
-        this.socket.on('run', function(data) {
+        this.socket.on('begin_run', function() {
+            console.log('begin run');
+            room.$runElements.toggleClass('active');
+        });
+
+        this.socket.on('end_run', function(data) {
             console.log('Output: ' + data);
             room.writeOutput(data);
         });
+
 
         this.socket.on('language', function(data) {
             console.log('Language: ' + data);

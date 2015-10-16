@@ -57,17 +57,18 @@
             code = editor.aceEditor.getValue(),
             language = editor.getLanguage();
 
+        webSocket.socket.emit('begin_run');
         if (language !== 'javascript') {
             var url = 'http://' + document.domain + ':' + location.port + '/room/run',
                 data = {'code': code, 'runner': language};
 
             console.log('Sending: ' + data.runner);
-            self.$runElements.toggleClass('active');
+
             editor.aceEditor.setReadOnly(true);
 
             $.post(url, data, function(data) {
                 console.log('Run - success');
-                webSocket.socket.emit('run', data);
+                webSocket.socket.emit('end_run', data);
             })
             .fail(function() {
                 console.log('Run - Error');
@@ -77,17 +78,17 @@
             console.log('Compiling: ' + language);
             self.$runElements.toggleClass('active');
             try {
-                webSocket.socket.emit('run', eval(code));
+                webSocket.socket.emit('end_run', eval(code));
             } catch (e) {
-                webSocket.socket.emit('run', e.message);
+                webSocket.socket.emit('end_run', e.message);
             }
 
         }
     };
 
     Room.prototype.writeOutput = function (string) {
-        editor.aceEditor.setReadOnly(false);
         this.$runElements.toggleClass('active');
+        editor.aceEditor.setReadOnly(false);
         this.$output.html(string);
     };
 

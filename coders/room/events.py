@@ -53,10 +53,16 @@ def rw(msg):
     emit("rw", msg, broadcast=True, room=room)
 
 
-@socketio.on("run", namespace="/socket")
-def output(msg):
+@socketio.on("end_run", namespace="/socket")
+def end_run(msg):
     room = session.get('room')
-    emit("run", msg, broadcast=True, room=room)
+    emit("end_run", msg, broadcast=True, room=room)
+
+
+@socketio.on("begin_run", namespace="/socket")
+def begin_run():
+    room = session.get('room')
+    emit("begin_run", '', broadcast=True, room=room)
 
 
 @socketio.on('language', namespace='/socket')
