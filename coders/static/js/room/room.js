@@ -62,6 +62,7 @@
                 data = {'code': code, 'runner': language};
 
             console.log('Sending: ' + data.runner);
+            self.$runElements.toggleClass('active');
             editor.aceEditor.setReadOnly(true);
 
             $.post(url, data, function(data) {
@@ -74,6 +75,7 @@
         }
         else {
             console.log('Compiling: ' + language);
+            self.$runElements.toggleClass('active');
             try {
                 webSocket.socket.emit('run', eval(code));
             } catch (e) {
@@ -84,8 +86,8 @@
     };
 
     Room.prototype.writeOutput = function (string) {
-        this.$runElements.toggleClass('active');
         editor.aceEditor.setReadOnly(false);
+        this.$runElements.toggleClass('active');
         this.$output.html(string);
     };
 

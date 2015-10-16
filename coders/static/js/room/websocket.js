@@ -58,7 +58,6 @@ var webSocket;
         });
 
         this.socket.on('run', function(data) {
-            room.$runElements.toggleClass('active');
             console.log('Output: ' + data);
             room.writeOutput(data);
         });
