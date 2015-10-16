@@ -23,6 +23,8 @@
         this.socket.on('status', function(data) {
             console.log('status: ' + data.msg);
             $('.overlay').hide();
+            start_modal();
+
         });
 
         this.socket.on('rw', function(data) {

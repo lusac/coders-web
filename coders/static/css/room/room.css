@@ -131,3 +131,51 @@
     -moz-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
 }
+
+/* MODAL */
+.window{
+    font-family: 'Comfortaa', cursive;
+    text-align: center;
+    display:none;
+    width:40%;
+    height:auto;
+    position:absolute;
+    left:0;
+    top:0;
+    background:#FFF;
+    z-index:9900;
+    padding:40px 10px;
+    border-radius:10px;
+}
+
+#mascara{
+    display:none;
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:9000;
+    background-color:#000;
+}
+
+.fechar {
+    display:block;
+    right: 3%;
+    top: 5%;
+    position: absolute;
+}
+
+.share-image {
+    width: 30%;
+}
+
+.share-text {
+    margin: 30px 0;
+}
+
+#shareUrl {
+    width: 70%;
+    font-size: 15px;
+    text-align: center;
+    color: #555;
+    height: 30px;
+}

@@ -8,13 +8,24 @@
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
-        <script src="{{ url_for('static', filename='js/room/websocket.js') }}"></script>
 
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fonts/fonts.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/room/room.css') }}">
 
     </head>
 <body>
+    <section id="modal">
+        <div class="window" id="janela1">
+            <span class="fechar">X</span>
+            <img class="share-image" src="{{ url_for('static', filename='img/icon.png') }}" />
+            <div class="share-text">
+                <h2>Share this room with your friends</h2>
+            </div>
+            <input id="shareUrl" type="text" name="url" value="">
+        </div>
+        <!-- mascara para cobrir o site -->
+        <div id="mascara"></div>
+    </section>
     <section id="header">
         <div class="coders-header">
             <div class="logo">
@@ -59,6 +70,7 @@
 
     <script src="{{ url_for('static', filename='js/room/editor.js') }}"></script>
     <script src="{{ url_for('static', filename='js/room/room.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/room/websocket.js') }}"></script>
     <script src="{{ url_for('static', filename='js/room/room_init.js') }}"></script>
 </body>
 </html>
