@@ -122,6 +122,7 @@
 
 #output-container {
     color: #FFF;
+    overflow: auto;
     font-size: 15px;
     background: #000;
     padding: 15px 20px;
