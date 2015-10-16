@@ -34,11 +34,18 @@
 
     Room.prototype.resizing = function () {
         var documentWidth = $(document).width(),
-            divisorPosition = this.$divisor.position().left;
+            divisorPosition = this.$divisor.position().left - 5;
+
+        if ((divisorPosition < 150) || (divisorPosition > documentWidth - 150)) {
+            console.log("nao deixo");
+            return false;
+        }
 
         this.$editor.css('width', divisorPosition)
         this.$editor.find('.ace_content').css('width', divisorPosition);
         this.$output.css('width', documentWidth - divisorPosition);
+
+        throttledEditorResize();
     };
 
     Room.prototype.runCode = function () {
@@ -63,6 +70,22 @@
     window.Room = Room;
 
 })(window, document, $);
+
+var throttledEditorResize = (function() {
+    var timeWindow = 150;
+    var lastExecution = new Date((new Date()).getTime() - timeWindow);
+
+    var throttledEditorResize = function () {
+        editor.aceEditor.resize();
+    };
+
+    return function() {
+        if ((lastExecution.getTime() + timeWindow) <= (new Date()).getTime()) {
+            lastExecution = new Date();
+            return throttledEditorResize.apply(this, arguments);
+        }
+    };
+})();
 
 function start_modal(){
 
