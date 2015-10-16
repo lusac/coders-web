@@ -21,9 +21,14 @@
         this.aceEditor.setShowPrintMargin(false);
         this.aceEditor.setOption('wrap', 'free');
         this.aceEditor.setTheme("ace/theme/monokai");
-        this.setLanguageHighlight('javascript');
         this.aceEditor.setValue(content);
+        this.setLanguageHighlight('javascript');
     };
+
+    Editor.prototype.getLanguage = function () {
+        var language = this.$comboLanguages.val();
+        return language;
+    }
 
     Editor.prototype.setLanguageHighlight = function (language) {
         var languageMode = ace.require('ace/mode/' + language).Mode;
@@ -45,9 +50,7 @@
         });
 
         this.$comboLanguages.on('change', function() {
-            var language = $(this).val();
-            if (language == 'nodejs') language = 'javascript';
-            self.setLanguageHighlight(language);
+            self.setLanguageHighlight(self.getLanguage());
         });
     };
 
