@@ -11,6 +11,7 @@
         this.$editor = $('#editor');
         this.$output = $('#output');
         this.$divisor = $('#divisor');
+        this.$run = $('#run');
 
         this.bindEvents();
     };
@@ -25,6 +26,10 @@
                 self.resizing();
             },
         });
+
+        this.$run.on('click', function() {
+            self.runCode();
+        });
     };
 
     Room.prototype.resizing = function () {
@@ -34,6 +39,21 @@
         this.$editor.css('width', divisorPosition)
         this.$editor.find('.ace_content').css('width', divisorPosition);
         this.$output.css('width', documentWidth - divisorPosition);
+    };
+
+    Room.prototype.runCode = function () {
+        var url = 'http://' + document.domain + ':' + location.port + '/room/run',
+            data = {'code': editor.aceEditor.getValue(), 'runner': 'python'}
+
+        $.post(url, data, function() {
+            console.log('Run - success');
+        })
+        .done(function() {
+            console.log('Run - done');
+        })
+        .fail(function() {
+            console.log('Run - Error');
+        })
     };
 
     window.Room = Room;

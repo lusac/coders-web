@@ -53,7 +53,7 @@ def create():
     return redirect("/room/%s" % room_uuid)
 
 
-@room.route("/room/run")
+@room.route("/room/run", methods=['POST'])
 def run(code, runner):
     if not code:
         return "you should send a code!", 500
