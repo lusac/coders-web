@@ -33,7 +33,7 @@
 .run-button {
     width: 7rem;
     height: 100%;
-    border: 1px solid #25B7D3;
+    border: none;
     border-radius: 5px;
     background-color: #25B7D3;
     font-size: 1rem;
@@ -41,6 +41,11 @@
     color: #FFF;
     font-family: 'Lato', sans-serif;
     text-align: center;
+}
+
+.run-button:hover {
+    cursor: pointer;
+    background-color: #007095;
 }
 
 .play-button {
