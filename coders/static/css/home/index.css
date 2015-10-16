@@ -8,7 +8,7 @@ h1 {
 
 h2 {
     color: #999;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
 }
 
 button {
@@ -19,6 +19,7 @@ button {
     padding: 1rem 0;
     margin-top: 1.6rem;
     width: 13rem;
+    text-transform: uppercase;
 }
 
 .intro {
@@ -26,7 +27,7 @@ button {
 }
 
 .intro img {
-	width: 15rem;
+	width: 10rem;
 }
 
 .logo-container {
