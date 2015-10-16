@@ -44,8 +44,8 @@ def create():
     room_uuid = uuid.uuid4().hex
 
     cache = current_app.redis
-    cache.set(room_uuid, '', 60 * 60 * 60 * 5)
-    cache.set("%s:users" % room_uuid, 60 * 60 * 60 * 5)
+    cache.set(room_uuid, '', 60 * 60 * 60 * 4)
+    cache.set("%s:users" % room_uuid, 0, 60 * 60 * 60 * 4)
     return redirect("/room/%s" % room_uuid)
 
 

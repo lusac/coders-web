@@ -13,7 +13,7 @@ def test_disconnect():
 
     total_user_cache_key = "%s:users" % room
     users = int(cache.get(total_user_cache_key))
-    cache.set(total_user_cache_key, users - 1, 60 * 60 * 60 * 5)
+    cache.set(total_user_cache_key, users - 1, 60 * 60 * 60 * 4)
 
     emit('user_out', {'msg': user}, broadcast=True, room=room)
 
@@ -27,7 +27,7 @@ def joined(msg):
 
     total_user_cache_key = "%s:users" % room
     users = int(cache.get(total_user_cache_key))
-    cache.set(total_user_cache_key, users + 1, 60 * 60 * 60 * 5)
+    cache.set(total_user_cache_key, users + 1, 60 * 60 * 60 * 4)
 
     join_room(room)
     emit('status', {'msg': 'connected room - ' + room}, room=room)
@@ -43,7 +43,7 @@ def connect():
 def rw(msg):
     room = session.get('room')
     cache = current_app.redis
-    cache.set('%s:content' % room, msg['text'], 60 * 60 * 60 * 5)
+    cache.set('%s:content' % room, msg['text'], 60 * 60 * 60 * 4)
 
     if not msg:
         msg = {'data': 'readwrite broaded'}
