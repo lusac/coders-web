@@ -85,15 +85,21 @@
     height: 8%;
 }
 
-#output,
-#editor {
+#output-container,
+#editor-container {
     width: 50%;
     float: left;
     height: 100%;
     display: block;
+    position: relative;
 }
 
-#output {
+#editor {
+    width: 100%;
+    height: 100%;
+}
+
+#output-container {
     background: #000;
 }
 
@@ -149,20 +155,20 @@
 }
 
 #mask {
+    top:0;
+    left:0;
+    z-index:9000;
     display:none;
     position:absolute;
-    left:0;
-    top:0;
-    z-index:9000;
     background-color:#000;
 }
 
 .close-btn {
-    display:block;
-    right: 3%;
     top: 5%;
-    position: absolute;
+    right: 3%;
+    display:block;
     cursor: pointer;
+    position: absolute;
 }
 
 .share-image {
@@ -179,4 +185,15 @@
     text-align: center;
     color: #555;
     height: 30px;
+}
+
+.editor-container {
+    position: relative;
+}
+
+.combo-language {
+    z-index: 10;
+    right: 20px;
+    bottom: 20px;
+    position: absolute;
 }

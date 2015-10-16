@@ -24,6 +24,7 @@
             <input id="shareUrl" type="text" name="url" value="">
         </div>
         <!-- mascara para cobrir o site -->
+
         <div id="mask"></div>
     </section>
     <section id="header">
@@ -41,9 +42,17 @@
     </section>
 
     <section id="section" data-room-ui="{{ room_uuid }}">
-        <div id="editor" data-content="{{ content }}"></div>
+        <div id="editor-container">
+            <div id="editor" data-content="{{ content }}"></div>
+            <select class="combo-language">
+              <option value="javascript">Javascript</option>
+              <option value="node">Node</option>
+              <option value="python">Python</option>
+              <option value="ruby">Ruby</option>
+            </select>
+        </div>
         <div id="divisor"></div>
-        <div id="output"></div>
+        <div id="output-container"></div>
     </section>
 
     <footer id="footer"></footer>

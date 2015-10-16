@@ -42,10 +42,9 @@
 
 function start_modal(){
 
-    var id = "#modal-window";
-
-    var windowHeight = $(document).height();
-    var windowWidth = $(window).width();
+    var id = "#modal-window",
+        windowHeight = $(document).height(),
+        windowWidth = $(window).width();
 
     //colocando o fundo preto
     $('#mask').css({'width':windowWidth,'height':windowHeight});
