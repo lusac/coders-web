@@ -22,12 +22,12 @@ room = Blueprint(
 )
 
 
+@room.errorhandler(404)
 @room.route("/room/<string:room_uuid>")
 def index(room_uuid):
     cache = current_app.redis
-    if not cache.get(room_uuid):
-        # return 404
-        pass
+    if not cache.get("%s:room" % room_uuid):
+        return render_template('404.html'), 404
 
     session['room'] = room_uuid
     users = int(cache.get("%s:users" % room_uuid))
@@ -44,8 +44,9 @@ def create():
     room_uuid = uuid.uuid4().hex
 
     cache = current_app.redis
-    cache.set(room_uuid, '', 60 * 60 * 60 * 4)
+    cache.set("%s:room" % room_uuid, room_uuid, 60 * 60 * 60 * 4)
     cache.set("%s:users" % room_uuid, 0, 60 * 60 * 60 * 4)
+
     return redirect("/room/%s" % room_uuid)
 
 
