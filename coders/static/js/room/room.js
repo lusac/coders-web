@@ -80,7 +80,7 @@
     };
 
     Room.prototype.writeOutput = function (string) {
-        this.$output.append('<br>' + string);
+        this.$output.html(string);
     };
 
     Room.prototype.convertToPercentage = function (width) {
