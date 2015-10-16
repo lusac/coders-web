@@ -42,7 +42,8 @@
     };
 
     Room.prototype.runCode = function () {
-        var url = 'http://' + document.domain + ':' + location.port + '/room/run',
+        var self = this,
+            url = 'http://' + document.domain + ':' + location.port + '/room/run',
             data = {'code': editor.aceEditor.getValue(), 'runner': editor.getLanguage()}
 
         console.log('Sending: ' + data.runner);
