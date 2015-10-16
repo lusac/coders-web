@@ -40,15 +40,14 @@
     <span class="overlay">
         <h3 class="overlay-text">Connecting to the room<span class="overlay-dot"></span></h3>
         <script>
-            var $dots = $('.overlay-dot');
             setInterval(function() {
+                var $dots = $('.overlay-dot');
+
                 if (($dots.text() + '.').length >= 4) {
                     $dots.html('');
                 } else {
                     $dots.append('.');
                 }
-
-                console.log(dots);
             }, 500);
         </script>
     </span>
