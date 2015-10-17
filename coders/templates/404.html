@@ -1,0 +1,24 @@
+{% extends "grid.html" %}
+
+{% block title %}Coders! 404{% endblock title %}
+
+{% block custom_css %}
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/home/index.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/room/404.css') }}">
+{% endblock custom_css %}
+
+{% block body %}
+    <section class="coders-body">
+        <div class="large-12 intro">
+            <div class="logo-container">
+                <div class="not-found-symbol">
+                    <p class="not-found-interrogation">?</p>
+                </div>
+            </div>
+            <h1>Coders!</h1>
+            <h2>Page not found</h2>
+            <a href="{{ url_for('home.index') }}" class="button">Back to home</a>
+            <a href="{{ url_for('room.create') }}" class="button">Create a room</a>
+        </div>
+    </section>
+{% endblock body %}
