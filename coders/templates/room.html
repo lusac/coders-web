@@ -1,19 +1,28 @@
-<html>
-    <head>
-        <meta charset='utf-8'>
-        <title>Coders - {{ room_uuid }}</title>
-        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/fav.ico') }}" />
+{% extends "grid.html" %}
 
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+{% block doctype %}
+    {# delete doctype tag because it makes the ace editor crazy #}
+{% endblock doctype %}
 
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+{% block title %}Coders - Room {{ room_uuid }}{% endblock title %}
 
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fonts/fonts.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/room/room.css') }}">
+{% block css %}
+    {# TODO - make this template use this block #}
+{% endblock css %}
 
-    </head>
-<body>
+{% block custom_css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fonts/fonts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/room/room.css') }}">
+{% endblock custom_css %}
+
+{% block js_top %}
+    {# TODO - kill jquery-ui (drag and drop) #}
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+{% endblock js_top %}
+
+{% block body %}
     <section id="modal">
         <div class="window" id="modal-window">
             <span class="close-btn">X</span>
@@ -25,9 +34,9 @@
             <button id="copy-button" class="button" data-clipboard-text="" title="Click to copy me">Copy to Clipboard</button>
         </div>
         <!-- mascara para cobrir o site -->
-
         <div id="mask"></div>
     </section>
+
     <section id="header">
         <div class="coders-header">
             <div class="logo">
@@ -61,6 +70,7 @@
         <div id="divisor"></div>
         <div id="output-container"></div>
     </section>
+
     <footer id="footer" data-users="{{ users }}">
         <div class="share-footer">
             <span>Share this room</span><img class="share-footer-image" src="{{ url_for('static', filename='img/share.svg') }}" />
@@ -107,8 +117,10 @@
             }, 500);
         </script>
     </span>
+{% endblock body %}
 
-    <script src="{{ url_for('static', filename='vendor/js/ace.js') }}"></script>
+{% block js_bottom %}
+    <script src="{{ url_for('static', filename='vendor/js/ace.js') }}" charset="utf-8"></script>
     <script src="{{ url_for('static', filename='vendor/js/themes/theme-monokai.js') }}"></script>
     <script src="{{ url_for('static', filename='vendor/js/modes/mode-javascript.js') }}"></script>
     <script src="{{ url_for('static', filename='vendor/js/modes/mode-python.js') }}"></script>
@@ -120,5 +132,4 @@
     <script src="{{ url_for('static', filename='js/room/room_init.js') }}"></script>
 
     <script src="{{ url_for('static', filename='vendor/js/zeroclipboard/ZeroClipboard.min.js') }}"></script>
-</body>
-</html>
+{% endblock js_bottom %}
