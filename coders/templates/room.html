@@ -58,12 +58,12 @@
         <div id="editor-container">
             <div id="editor" data-content="{{ content }}" data-lang="{{ language }}"></div>
             <select id="combo-language" class="combo-language">
-            {% for lang in ['javascript', 'python', 'ruby'] %}
-              <option value="{{ lang }}" {% if lang == language %}selected="selected"{% endif %}>{{ lang|capitalize }}</option>
-          {% endfor %}
+                {% for lang in ['javascript', 'python', 'ruby'] %}
+                    <option value="{{ lang }}" {% if lang == language %}selected="selected"{% endif %}>{{ lang|capitalize }}</option>
+                {% endfor %}
             </select>
+            <span id="divisor"></span>
         </div>
-        <div id="divisor"></div>
         <div id="output-container"></div>
     </section>
 

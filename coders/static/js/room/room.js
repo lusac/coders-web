@@ -29,7 +29,7 @@
             },
             stop: function( event, ui ) {
                 var width = parseInt($(this).css("left"), 10);
-                $(this).css('left', self.convertToPercentage(width));
+                $(this).css({'right': 0, 'left': 'initial'});
             }
         });
 
