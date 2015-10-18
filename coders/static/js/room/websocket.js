@@ -14,7 +14,10 @@ var webSocket;
     };
 
     WebSocket.prototype.init = function () {
-        this.socket = io.connect('http://' + document.domain + ':' + location.port + '/socket');
+        this.socket = io.connect(
+            'http://' + document.domain + ':' + location.port + '/socket',
+            {'connect timeout': 1000}
+        );
     };
 
     WebSocket.prototype.bindEvents = function () {
