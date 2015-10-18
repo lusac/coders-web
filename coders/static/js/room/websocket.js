@@ -42,7 +42,7 @@ var webSocket;
             var currentData = editor.aceEditor.getValue();
 
             if (typeof(data) == 'object') {
-                if (editor.id != data.id && data.type == 'code') {
+                if (editor.id != data.id) {
                     editor.canSend = false;
                     editor.setValue(data.text);
                     editor.canSend = true;

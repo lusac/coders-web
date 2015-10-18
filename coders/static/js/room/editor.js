@@ -50,7 +50,6 @@
             if (self.canSend) {
                 var msg = {
                     'id': self.id,
-                    'type': 'code',
                     'text': self.aceEditor.getValue()
                 }
                 webSocket.socket.emit('broad', msg);
