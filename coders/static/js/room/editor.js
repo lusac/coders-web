@@ -4,18 +4,21 @@
     'use strict';
 
     var Editor = function Editor() {
-        this.$editor = $("#editor");
-        this.aceEditor;
-        this.id = this.guid();
-        this.canSend = true;
-        this.canSendLanguage = true;
-        this.$comboLanguages = $('#combo-language');
-
         this.init();
-        this.bindEvents();
     };
 
     Editor.prototype.init = function () {
+        this.$editor = $("#editor");
+        this.$comboLanguages = $('#combo-language');
+        this.id = this.guid();
+        this.canSend = true;
+        this.canSendLanguage = true;
+
+        this.aceEditorInit();
+        this.bindEvents();
+    };
+
+    Editor.prototype.aceEditorInit = function () {
         var content = this.$editor.attr("data-content"),
             language = this.$editor.attr("data-lang");
 
@@ -27,15 +30,14 @@
         this.$editor.css('font-size', '13px');
         this.setValue(content);
         this.setLanguageHighlight(language);
-    };
+    }
 
     Editor.prototype.setValue = function (val) {
         this.aceEditor.setValue(val, -1);
     };
 
     Editor.prototype.getLanguage = function () {
-        var language = this.$comboLanguages.val();
-        return language;
+        return this.$comboLanguages.val();
     }
 
     Editor.prototype.setLanguageHighlight = function (language) {
