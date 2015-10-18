@@ -13,6 +13,6 @@ open source room to interactive code
 - [ ] show connection status
 
 plus!
-- [ ] improve socket performance
+- [x] improve socket performance
 - [ ] run wait docker container
 - [ ] add more languages
