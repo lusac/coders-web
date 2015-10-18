@@ -23,6 +23,8 @@
     float: left;
     line-height: 30px;
     margin-left: 10px;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .run, .running {
@@ -36,6 +38,8 @@
 }
 
 .run-button, .running-button {
+    margin: 0;
+    padding: 0;
     width: 7rem;
     height: 100%;
     border: none;
@@ -140,6 +144,7 @@ button:focus {
     top: 3px;
     position: relative;
     margin-left: 10px;
+    vertical-align: top;
 }
 
 #footer .watchers #Capa_1 {
