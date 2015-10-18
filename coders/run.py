@@ -10,13 +10,13 @@ from home.views import home
 from room.views import room
 from room.events import socketio
 
-REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
-REDIS_PORT = os.getenv("REDIS_PORT", 6379)
-REDIS_PASS = os.getenv("REDIS_PASS", None)
-REDIS_MASTER = os.getenv("REDIS_MASTER", None)
+REDIS_HOST = os.getenv('REDIS_HOST', 'localhost')
+REDIS_PORT = os.getenv('REDIS_PORT', 6379)
+REDIS_PASS = os.getenv('REDIS_PASS', None)
+REDIS_MASTER = os.getenv('REDIS_MASTER', None)
 
-DEBUG = os.getenv("DEBUG", True)
-PORT = int(os.getenv("PORT", '8000'))
+DEBUG = os.getenv('DEBUG', True)
+PORT = int(os.getenv('PORT', '8000'))
 
 app = Flask(__name__)
 
@@ -35,4 +35,4 @@ else:
 app.debug = DEBUG
 
 socketio.init_app(app)
-socketio.run(app, port=PORT, host="0.0.0.0")
+socketio.run(app, port=PORT, host='0.0.0.0')

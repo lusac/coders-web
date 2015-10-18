@@ -10,11 +10,11 @@ home = Blueprint(
 )
 
 
-@home.route("/")
+@home.route('/')
 def index():
     return render_template('home.html')
 
 
-@home.route("/developers")
+@home.route('/developers')
 def developers():
     return render_template('developers.html')
