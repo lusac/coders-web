@@ -132,26 +132,13 @@ function start_modal(){
     $(id).css({'top':top,'left':left});
     $(id).show("slow");
     update_url();
-    prepareCopyToClipboard();
+    new Clipboard('#copy-button');
 }
 
 function update_url() {
     var $shareUrl = $("#shareUrl");
     $shareUrl.val(window.location.href);
     $shareUrl.select().focus();
-}
-
-function prepareCopyToClipboard() {
-    var btnCopyToClipboard = document.getElementById("copy-button");
-    btnCopyToClipboard.dataset.clipboardText = window.location.href;
-
-    ZeroClipboard.config({ forceHandCursor: true });
-    var zc = new ZeroClipboard(btnCopyToClipboard);
-    zc.on("ready", function(readyEvent) {
-        zc.on("aftercopy", function(event) {
-            console.log("Copied text to clipboard: " + event.data["text/plain"] );
-        });
-    });
 }
 
 $('.share-footer').click(function() {
