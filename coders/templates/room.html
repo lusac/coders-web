@@ -14,7 +14,7 @@
     {# TODO - kill jquery-ui (drag and drop) #}
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='vendor/js/socketio/socket.io.min.js') }}"></script>
 {% endblock js_top %}
 
 {% block body %}
