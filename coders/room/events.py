@@ -35,11 +35,6 @@ def joined(msg):
     emit('user_in', {'msg': user}, broadcast=True, room=room)
 
 
-@socketio.on('connect', namespace='/socket')
-def connect():
-    emit('conn', {'data': 'connected'})
-
-
 @socketio.on('broad', namespace='/socket')
 def rw(msg):
     room = session.get('room')
