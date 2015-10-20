@@ -6,7 +6,6 @@
 
 .coders-header {
     text-align: left;
-    font-family: 'Comfortaa', cursive;
 }
 
 .coders-header .logo img {
@@ -16,7 +15,6 @@
 }
 
 .coders-header .logo h3 {
-    font-family: 'Comfortaa', cursive;
     font-size: 20px;
     color: #fff;
     position: relative;
@@ -210,14 +208,12 @@ button:focus {
     display: block;
     font-size: 22px;
     position: absolute;
-    font-family: 'Comfortaa', cursive;
     transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
 }
 
 #share-modal {
-    font-family: 'Comfortaa', cursive;
     text-align: center;
 }
 
