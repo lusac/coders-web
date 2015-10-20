@@ -33,7 +33,7 @@ var webSocket;
             $('.overlay').hide();
 
             if (self.users === 0) {
-                start_modal();
+                shareModalStart();
             }
 
         });

@@ -116,21 +116,8 @@ var throttledEditorResize = (function() {
     };
 })();
 
-function start_modal(){
-
-    var id = "#modal-window",
-        windowHeight = $(document).height(),
-        windowWidth = $(window).width();
-
-    //colocando o fundo preto
-    $('#mask').css({'width':windowWidth,'height':windowHeight});
-    $('#mask').fadeTo("slow",0.8);
-
-    var left = ($(window).width() /2) - ( $(id).width() / 2 );
-    var top = ($(window).height() / 2) - ( $(id).height() );
-
-    $(id).css({'top':top,'left':left});
-    $(id).show("slow");
+function shareModalStart(){
+    $('#share-modal').foundation('reveal', 'open');
     update_url();
     new Clipboard('#copy-button');
 }
@@ -142,17 +129,7 @@ function update_url() {
 }
 
 $('.share-footer').click(function() {
-    start_modal();
-});
-
-$("#mask").click( function(){
-    $(this).hide();
-    $(".window").hide();
-});
-
-$('.close-btn').click(function(){
-    $("#mask").hide();
-    $(".window").hide();
+    shareModalStart();
 });
 
 $("#shareUrl").click(function() {

@@ -18,19 +18,6 @@
 {% endblock js_top %}
 
 {% block body %}
-    <section id="modal">
-        <div class="window" id="modal-window">
-            <span class="close-btn">X</span>
-            <img class="share-image" src="{{ url_for('static', filename='img/icon.png') }}" />
-            <div class="share-text">
-                <h2>Share this room with your friends</h2>
-            </div>
-            <input id="shareUrl" type="text" name="url" value="">
-            <button id="copy-button" class="button" data-clipboard-target="#shareUrl" title="Click to copy me">Copy to Clipboard</button>
-        </div>
-        <!-- mascara para cobrir o site -->
-        <div id="mask"></div>
-    </section>
 
     <section id="header">
         <div class="coders-header">
@@ -112,6 +99,16 @@
             }, 500);
         </script>
     </span>
+
+    <span id="share-modal" class="reveal-modal small" data-reveal aria-hidden="true" role="dialog">
+        <img class="share-image" src="{{ url_for('static', filename='img/icon.png') }}" />
+        <div class="share-text">
+            <h2>Share this room with your friends</h2>
+        </div>
+        <input id="shareUrl" type="text" name="url" value="">
+        <button id="copy-button" class="button" data-clipboard-target="#shareUrl" title="Click to copy me">Copy to Clipboard</button>
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </span>
 {% endblock body %}
 
 {% block js_bottom %}
@@ -126,5 +123,7 @@
     <script src="{{ url_for('static', filename='js/room/websocket.js') }}"></script>
     <script src="{{ url_for('static', filename='js/room/room_init.js') }}"></script>
 
+    <script src="{{ url_for('static', filename='vendor/js/foundation/foundation.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/js/foundation/foundation.reveal.js') }}"></script>
     <script src="{{ url_for('static', filename='vendor/js/clipboard/clipboard.min.js') }}"></script>
 {% endblock js_bottom %}

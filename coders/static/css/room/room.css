@@ -216,37 +216,9 @@ button:focus {
     -webkit-transform: translate(-50%, -50%);
 }
 
-/* MODAL */
-.window{
+#share-modal {
     font-family: 'Comfortaa', cursive;
     text-align: center;
-    display:none;
-    width:40%;
-    height:auto;
-    position:absolute;
-    left:0;
-    top:0;
-    background:#FFF;
-    z-index:9900;
-    padding:40px 10px;
-    border-radius:10px;
-}
-
-#mask {
-    top:0;
-    left:0;
-    z-index:9000;
-    display:none;
-    position:absolute;
-    background-color:#000;
-}
-
-.close-btn {
-    top: 5%;
-    right: 3%;
-    display:block;
-    cursor: pointer;
-    position: absolute;
 }
 
 .share-image {
