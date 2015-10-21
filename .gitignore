@@ -62,3 +62,9 @@ target/
 # Code to compile
 code
 *.tar.gz
+
+# Node
+node_modules/
+
+# Sass
+.sass-cache/
