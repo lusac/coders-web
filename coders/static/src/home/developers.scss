@@ -1,0 +1,26 @@
+.logo-container h1 {
+    display: inline-block;
+    margin-left: 4%;
+    vertical-align: middle;
+}
+
+.team-member {
+  list-style: none;
+  display: inline-block;
+  padding: 2vw;
+}
+
+.member-photo {
+  max-width: 20vw;
+  border-radius: 100%;
+}
+
+#team p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    font-family: 'Lato';
+}
+
+#team {
+    margin-top: 5rem;
+}
