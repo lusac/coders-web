@@ -1,6 +1,11 @@
 # coders
 open source room to interactive code
 
+# Developer
+There are some Grunt tasks to make your workflow faster.
+
+Run `grunt --help` to see all the tasks.
+
 ### ToDo
 - [x] see old code
 - [x] create a room
