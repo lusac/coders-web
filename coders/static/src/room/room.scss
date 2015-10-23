@@ -1,5 +1,10 @@
 @import '../config';
 
+.room {
+    &__run-btn {
+        font-size: 0.95rem !important;
+    }
+}
 .coders-header {
     text-align: left;
 
@@ -33,7 +38,7 @@
     display: block;
 }
 
-.run-button, .running-button {
+.running-button {
     margin: 0;
     padding: 0;
     width: 7rem;
@@ -60,17 +65,7 @@
     right: 7px;
 }
 
-button:focus {
-    outline: none;
-}
-
-.run-button:hover {
-    cursor: pointer;
-    background-color: #007095;
-}
-
 .play-button {
-    left: 23px;
     float: left;
     position: relative;
     border: 8px solid transparent;
@@ -229,28 +224,6 @@ button:focus {
     height: 30px;
     font-size: 15px;
     text-align: center;
-}
-
-#copy-button {
-    display: block;
-    margin: 0 auto;
-    font-size: 1rem;
-    margin-top: 1rem;
-
-    &:hover {
-        cursor: pointer;
-    }
-}
-
-
-.button {
-    border: none;
-    width: 13rem;
-    padding: 1rem 0;
-    border-radius: 7px;
-    font-family: $lato;
-    background: #25B7D3;
-    text-transform: uppercase;
 }
 
 .editor-container {
