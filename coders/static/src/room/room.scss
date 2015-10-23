@@ -2,23 +2,25 @@
 
 .coders-header {
     text-align: left;
-}
 
-.coders-header .logo img {
-    width: 30px;
-    position: relative;
-    float: left;
-}
+    .logo {
+        img {
+            width: 30px;
+            float: left;
+            position: relative;
+        }
 
-.coders-header .logo h3 {
-    font-size: 20px;
-    color: #fff;
-    position: relative;
-    float: left;
-    line-height: 30px;
-    margin-left: 10px;
-    margin: 0 0 0 10px !important;
-    padding: 0 !important;
+         h3 {
+            color: #fff;
+            float: left;
+            font-size: 20px;
+            line-height: 30px;
+            margin-left: 10px;
+            position: relative;
+            padding: 0 !important;
+            margin: 0 0 0 10px !important;
+        }
+    }
 }
 
 .run, .running {
@@ -68,13 +70,13 @@ button:focus {
 }
 
 .play-button {
-    position: relative;
-    float: left;
     left: 23px;
+    float: left;
+    position: relative;
     border: 8px solid transparent;
     border-width: 8px 12px;
-    border-left-color: #FFF;
     background: transparent;
+    border-left-color: #FFF;
 }
 
 #section,
@@ -84,8 +86,8 @@ button:focus {
 }
 
 #section {
-    padding-top: 60px;
     height: 94%;
+    padding-top: 60px;
 }
 
 #header{
@@ -102,49 +104,49 @@ button:focus {
 
 #footer {
     height: 6%;
+    position: relative;
     background-color: #000;
     border-top: 1px solid #FFF;
-    position: relative;
-}
 
-#footer span {
-    color: #999;
-    font-family: $lato;
-    position: relative;
-    top: -1px;
-}
+    span {
+        top: -1px;
+        color: #999;
+        font-family: $lato;
+        position: relative;
+    }
 
-#footer .watchers {
-    position: absolute;
-    top: 50%;
-    transform: translate(0,-50%);
-    right: 15px;
-}
+    .watchers {
+        top: 50%;
+        right: 15px;
+        position: absolute;
+        transform: translate(0,-50%);
+    }
 
-#footer .share-footer {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    left: 15px;
-    cursor: pointer;
-}
+    .share-footer {
+        top: 50%;
+        left: 15px;
+        cursor: pointer;
+        position: absolute;
+        transform: translate(0, -50%);
+    }
 
-#footer .share-footer span {
-    text-transform: uppercase;
-}
+    .share-footer span {
+        text-transform: uppercase;
+    }
 
-#footer .share-footer-image {
-    width: 20px;
-    top: 3px;
-    position: relative;
-    margin-left: 10px;
-    vertical-align: top;
-}
+    .share-footer-image {
+        top: 3px;
+        width: 20px;
+        margin-left: 10px;
+        position: relative;
+        vertical-align: top;
+    }
 
-#footer .watchers #Capa_1 {
-    position: absolute;
-    left: -30px;
-    top: 0;
+    .watchers #Capa_1 {
+        top: 0;
+        left: -30px;
+        position: absolute;
+    }
 }
 
 #output-container,
@@ -153,8 +155,8 @@ button:focus {
     float: left;
     height: 100%;
     display: block;
-    position: relative;
     padding-top: 10px;
+    position: relative;
 }
 
 #editor {
@@ -223,30 +225,31 @@ button:focus {
 
 #shareUrl {
     width: 70%;
-    font-size: 15px;
-    text-align: center;
     color: #555;
     height: 30px;
+    font-size: 15px;
+    text-align: center;
 }
 
 #copy-button {
     display: block;
     margin: 0 auto;
-    margin-top: 1rem;
     font-size: 1rem;
+    margin-top: 1rem;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
-#copy-button:hover {
-    cursor: pointer;
-}
 
 .button {
+    border: none;
+    width: 13rem;
+    padding: 1rem 0;
+    border-radius: 7px;
     font-family: $lato;
     background: #25B7D3;
-    border: none;
-    border-radius: 7px;
-    padding: 1rem 0;
-    width: 13rem;
     text-transform: uppercase;
 }
 
@@ -255,18 +258,19 @@ button:focus {
 }
 
 .combo-language {
-    background-color: inherit;
+    width: 30%;
+    color: #FFF;
     z-index: 10;
     right: 20px;
-    bottom: 20px;
-    position: absolute;
-    width: 30%;
     height: 35px;
-    font-family: $lato;
+    bottom: 20px;
     font-size: 14px;
-    color: #FFF;
+    font-family: $lato;
+    position: absolute;
+    background-color: inherit;
+
+    &:focus {
+        outline: none;
+    }
 }
 
-.combo-language:focus {
-    outline: none;
-}
