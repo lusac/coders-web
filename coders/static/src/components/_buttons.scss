@@ -1,0 +1,14 @@
+button {
+    width: 13rem;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    margin-top: 1.6rem;
+    border-radius: 7px;
+    font-family: $lato;
+    background: #25B7D3;
+    text-transform: uppercase;
+
+    &:focus {
+        outline: none;
+    }
+}

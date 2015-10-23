@@ -1,5 +1,16 @@
 $lato: 'Lato', sans-serif;
+$cofortaa: 'Comfortaa', cursive;
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Comfortaa', cursive !important;
+    font-family: $cofortaa !important;
+}
+
+h1 {
+    margin: 0;
+    font-size: 5em;
+}
+
+h2 {
+    color: #999;
+    font-size: 1.4rem;
 }

@@ -1,13 +1,13 @@
 .logo-container h1 {
-    display: inline-block;
     margin-left: 4%;
+    display: inline-block;
     vertical-align: middle;
 }
 
 .team-member {
+  padding: 2vw;
   list-style: none;
   display: inline-block;
-  padding: 2vw;
 }
 
 .member-photo {
@@ -15,12 +15,12 @@
   border-radius: 100%;
 }
 
-#team p {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    font-family: $lato;
-}
-
 #team {
     margin-top: 5rem;
+
+    p {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        font-family: $lato;
+    }
 }
