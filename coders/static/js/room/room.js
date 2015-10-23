@@ -11,8 +11,8 @@
         this.$editor = $('#editor-container');
         this.$output = $('#output-container');
         this.$divisor = $('#divisor');
-        this.$run = $('#run');
-        this.$runElements = $('.run-container').children();
+        this.$run = $('.run-btn');
+        this.$runElements = $('.room__run-buttons').children();
         this.documentWidth = $(document).width();
 
         this.bindEvents();
@@ -53,11 +53,12 @@
     };
 
     Room.prototype.runCode = function () {
-        var self = this,
-            code = editor.aceEditor.getValue(),
+        var code = editor.aceEditor.getValue(),
             language = editor.getLanguage();
 
+        this.$runElements.toggleClass('active');
         webSocket.socket.emit('begin_run');
+
         if (language !== 'javascript') {
             var url = 'http://' + document.domain + ':' + location.port + '/room/run',
                 data = {'code': code, 'runner': language};
@@ -76,9 +77,10 @@
         }
         else {
             console.log('Compiling: ' + language);
-            self.$runElements.toggleClass('active');
+
             try {
                 webSocket.socket.emit('end_run', eval(code));
+                this.$runElements.toggleClass('active');
             } catch (e) {
                 webSocket.socket.emit('end_run', e.message);
             }

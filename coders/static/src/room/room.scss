@@ -1,10 +1,5 @@
 @import '../config';
 
-.room {
-    &__run-btn {
-        font-size: 0.95rem !important;
-    }
-}
 .coders-header {
     text-align: left;
 
@@ -28,50 +23,20 @@
     }
 }
 
-.run, .running {
-    text-align: right;
-    height: 30px;
-    display: none;
-}
+.room {
+    &__run-buttons {
+        .run-btn {
+            font-size: 0.95rem !important;
+        }
 
-.run.active, .running.active {
-    display: block;
-}
+        .run-btn, .running-btn {
+            display: none;
+        }
 
-.running-button {
-    margin: 0;
-    padding: 0;
-    width: 7rem;
-    height: 100%;
-    border: none;
-    border-radius: 5px;
-    background-color: #25B7D3;
-    font-size: 1rem;
-    line-height: 1rem;
-    color: #FFF;
-    font-family: $lato;
-    text-align: center;
-}
-
-.running-button {
-    background-color: transparent;
-    border: 2px solid #CCC;
-    color: #CCC;
-}
-
-.running-button img {
-    position: relative;
-    width: 13px;
-    right: 7px;
-}
-
-.play-button {
-    float: left;
-    position: relative;
-    border: 8px solid transparent;
-    border-width: 8px 12px;
-    background: transparent;
-    border-left-color: #FFF;
+        .run-btn.active, .running-btn.active {
+            display: block;
+        }
+    }
 }
 
 #section,
@@ -85,7 +50,7 @@
     padding-top: 60px;
 }
 
-#header{
+#header {
     top: 0;
     left: 0;
     z-index: 10;
