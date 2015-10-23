@@ -1,3 +1,5 @@
+@import '../config';
+
 * {
     margin: 0;
     padding: 0;
@@ -46,7 +48,7 @@
     font-size: 1rem;
     line-height: 1rem;
     color: #FFF;
-    font-family: 'Lato', sans-serif;
+    font-family: $lato;
     text-align: center;
 }
 
@@ -113,7 +115,7 @@ button:focus {
 
 #footer span {
     color: #999;
-    font-family: 'Lato', sans-serif;
+    font-family: $lato;
     position: relative;
     top: -1px;
 }
@@ -245,7 +247,7 @@ button:focus {
 }
 
 .button {
-    font-family: 'Lato', sans-serif;
+    font-family: $lato;
     background: #25B7D3;
     border: none;
     border-radius: 7px;
@@ -266,7 +268,7 @@ button:focus {
     position: absolute;
     width: 30%;
     height: 35px;
-    font-family: 'Lato', sans-serif;
+    font-family: $lato;
     font-size: 14px;
     color: #FFF;
 }
