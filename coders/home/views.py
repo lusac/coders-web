@@ -17,4 +17,31 @@ def index():
 
 @home.route('/developers')
 def developers():
-    return render_template('developers.html')
+    developers = [
+        {
+            'name': 'Brasil',
+            'github': 'https://github.com/raphaabrasil',
+            'image': 'img/developers/brasil.jpg',
+        },
+        {
+            'name': 'Darlene',
+            'github': 'https://github.com/darlenedms',
+            'image': 'img/developers/darlene.jpg',
+        },
+        {
+            'name': 'Hugo',
+            'github': 'https://github.com/hugoantunes',
+            'image': 'img/developers/hugo.jpg',
+        },
+        {
+            'name': 'Lusac',
+            'github': 'https://github.com/lusac/',
+            'image': 'img/developers/lusac.jpg',
+        },
+        {
+            'name': 'Tarsis',
+            'github': 'https://github.com/tarsisazevedo',
+            'image': 'img/developers/tarsis.jpg',
+        },
+    ]
+    return render_template('developers.html', developers=developers)
