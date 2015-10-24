@@ -2,21 +2,23 @@
 
 {% block title %}Coders!{% endblock title %}
 
-{% block body %}
-    <section class="coders-body">
-        <div class="large-12 intro">
-            <div class="logo-container">
-                <img src="{{ url_for('static', filename='img/icon.png') }}" />
-            </div>
-            <h1>Coders!</h1>
-            <h2 id="intro">< share your code with us /> </h2>
-            <button class="button" onclick="create_room()">Start now</button>
-        </div>
-    </section>
+{% block body_logo_container %}
+    <a href="{{ url_for('home.index') }}">
+        <img src="{{ url_for('static', filename='img/icon.png') }}" />
+    </a>
+{% endblock body_logo_container %}
+
+{% block body_intro_after %}
+    <h1>Coders!</h1>
+    <h2 id="intro">< share your code with us /> </h2>
+    <button class="button" onclick="create_room()">Start now</button>
+{% endblock body_intro_after %}
+
+{% block footer %}
     <footer>
         <p class="developers"><a href="{{ url_for('home.developers') }}">Developers</a></p>
     </footer>
-{% endblock body %}
+{% endblock footer %}
 
 {% block js_bottom %}
     <script type="text/javascript" src="{{ url_for('static', filename='vendor/js/TypingText.js') }}"></script>

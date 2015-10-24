@@ -25,8 +25,20 @@
     </head>
 
     <body>
+        {% block header %}{% endblock header %}
         {% block body %}
+            <section class="coders-body">
+                <div class="large-12 intro">
+                    <div class="logo-container">
+                        {% block body_logo_container %}
+                        {% endblock body_logo_container %}
+                    </div>
+                    {% block body_intro_after %}
+                    {% endblock body_intro_after %}
+                </div>
+            </section>
         {% endblock body %}
+        {% block footer %}{% endblock footer %}
     </body>
 
     {% block js_bottom %}

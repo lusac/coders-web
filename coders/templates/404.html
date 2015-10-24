@@ -2,18 +2,15 @@
 
 {% block title %}Coders! 404{% endblock title %}
 
-{% block body %}
-    <section class="coders-body">
-        <div class="large-12 intro">
-            <div class="logo-container">
-                <div class="not-found-symbol">
-                    <p class="not-found-interrogation">?</p>
-                </div>
-            </div>
-            <h1>Coders!</h1>
-            <h2>Page not found</h2>
-            <a href="{{ url_for('home.index') }}" class="button">Back to home</a>
-            <a href="{{ url_for('room.create') }}" class="button">Create a room</a>
-        </div>
-    </section>
-{% endblock body %}
+{% block body_logo_container %}
+    <div class="not-found-symbol">
+        <p class="not-found-interrogation">?</p>
+    </div>
+{% endblock body_logo_container %}
+
+{% block body_intro_after %}
+    <h1>Coders!</h1>
+    <h2>Page not found</h2>
+    <a href="{{ url_for('home.index') }}" class="button">Back to home</a>
+    <a href="{{ url_for('room.create') }}" class="button">Create a room</a>
+{% endblock body_intro_after %}

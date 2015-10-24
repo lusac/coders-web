@@ -2,37 +2,34 @@
 
 {% block title %}Coders! Developers{% endblock title %}
 
-{% block body %}
-    <section class="coders-body">
-        <div class="large-12 intro">
-            <div class="logo-container">
-                <a href="{{ url_for('home.index') }}">
-                    <img src="{{ url_for('static', filename='img/icon.png') }}" />
-                </a>
-                <h1>Coders!</h1>
-            </div>
-            <ul id="team">
-                <li class="team-member">
-                    <a href="https://github.com/raphaabrasil"><img class="member-photo" src="{{ url_for('static', filename='img/developers/brasil.jpg') }}" alt="Brasil"></a>
-                    <p>Brasil</p>
-                </li>
-                <li class="team-member">
-                    <a href="https://github.com/darlenedms"><img class="member-photo" src="{{ url_for('static', filename='img/developers/darlene.jpg') }}" alt="Darlene"></a>
-                    <p>Darlene</p>
-                </li>
-                <li class="team-member">
-                    <a href="https://github.com/hugoantunes"><img class="member-photo" src="{{ url_for('static', filename='img/developers/hugo.jpg') }}" alt="Hugo"></a>
-                    <p>Hugo</p>
-                </li>
-                <li class="team-member">
-                    <a href="https://github.com/lusac/"><img class="member-photo" src="{{ url_for('static', filename='img/developers/lusac.jpg') }}" alt="Lusac"></a>
-                    <p>Lusac</p>
-                </li>
-                <li class="team-member">
-                    <a href="https://github.com/tarsisazevedo"><img class="member-photo" src="{{ url_for('static', filename='img/developers/tarsis.jpg') }}" alt="Tarsis"></a>
-                    <p>Tarsis</p>
-                </li>
-            </ul>
-        </div>
-    </section>
-{% endblock body %}
+{% block body_logo_container %}
+    <a href="{{ url_for('home.index') }}">
+        <img src="{{ url_for('static', filename='img/icon.png') }}" />
+    </a>
+    <h1>Coders!</h1>
+{% endblock body_logo_container %}
+
+{% block body_intro_after %}
+    <ul id="team">
+        <li class="team-member">
+            <a href="https://github.com/raphaabrasil"><img class="member-photo" src="{{ url_for('static', filename='img/developers/brasil.jpg') }}" alt="Brasil"></a>
+            <p>Brasil</p>
+        </li>
+        <li class="team-member">
+            <a href="https://github.com/darlenedms"><img class="member-photo" src="{{ url_for('static', filename='img/developers/darlene.jpg') }}" alt="Darlene"></a>
+            <p>Darlene</p>
+        </li>
+        <li class="team-member">
+            <a href="https://github.com/hugoantunes"><img class="member-photo" src="{{ url_for('static', filename='img/developers/hugo.jpg') }}" alt="Hugo"></a>
+            <p>Hugo</p>
+        </li>
+        <li class="team-member">
+            <a href="https://github.com/lusac/"><img class="member-photo" src="{{ url_for('static', filename='img/developers/lusac.jpg') }}" alt="Lusac"></a>
+            <p>Lusac</p>
+        </li>
+        <li class="team-member">
+            <a href="https://github.com/tarsisazevedo"><img class="member-photo" src="{{ url_for('static', filename='img/developers/tarsis.jpg') }}" alt="Tarsis"></a>
+            <p>Tarsis</p>
+        </li>
+    </ul>
+{% endblock body_intro_after %}
