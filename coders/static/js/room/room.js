@@ -12,7 +12,7 @@
         this.$output = $('#output-container');
         this.$divisor = $('#divisor');
         this.$run = $('.run-btn');
-        this.$runElements = $('.room__run-buttons').children();
+        this.$runElements = $('.room__header-buttons').children();
         this.documentWidth = $(document).width();
 
         this.bindEvents();

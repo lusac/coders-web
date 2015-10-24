@@ -18,29 +18,26 @@
 {% endblock js_top %}
 
 {% block body %}
+    <header class="room__header">
+        <span class="room__header-logo">
+            <a href="{{ url_for('home.index') }}">
+                <img src="{{ url_for('static', filename='img/icon.png') }}" />
+                <h3>Coders</h3>
+            </a>
+        </span>
 
-    <section id="header">
-        <div class="coders-header">
-            <div class="logo">
-                <a href="{{ url_for('home.index') }}">
-                    <img src="{{ url_for('static', filename='img/icon.png') }}" />
-                    <h3>Coders</h3>
-                </a>
-            </div>
-            <div class="room__run-buttons right">
-                <button class="run-btn tiny active">
-                    <div class="play-btn"></div>Run
-                </button>
+        <span class="room__header-buttons right">
+            <button class="run-btn tiny active">
+                <div class="play-btn"></div>Run
+            </button>
 
-                <button class="running-btn tiny">
-                    <img src="{{ url_for('static', filename='img/loading-gif.gif') }}" />Running
-                </button>
-            </div>
+            <button class="running-btn tiny">
+                <img src="{{ url_for('static', filename='img/loading-gif.gif') }}" />Running
+            </button>
+        </span>
+    </header>
 
-        </div>
-    </section>
-
-    <section id="section" data-room-ui="{{ room_uuid }}">
+    <section class="room__section" data-room-ui="{{ room_uuid }}">
         <div id="editor-container">
             <div id="editor" data-content="{{ content }}" data-lang="{{ language }}"></div>
             <select id="combo-language" class="combo-language">
@@ -53,7 +50,7 @@
         <div id="output-container"></div>
     </section>
 
-    <footer id="footer" data-users="{{ users }}">
+    <footer id="footer" class="room__footer" data-users="{{ users }}">
         <div class="share-footer">
             <span>Share this room</span><img class="share-footer-image" src="{{ url_for('static', filename='img/share.svg') }}" />
         </div>
