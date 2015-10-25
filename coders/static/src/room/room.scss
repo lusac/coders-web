@@ -1,15 +1,16 @@
 @import '../config';
 
+body {
+    background: #000;
+}
+
 .room {
     &__header {
-        top: 0;
-        left: 0;
         z-index: 10;
         width: 100%;
-        height: auto;
+        height: 60px;
         padding: 15px;
         text-align: left;
-        position: absolute;
         background-color: $black;
         border-bottom: 1px solid #EEE;
 
@@ -48,12 +49,12 @@
     }
 
     &__section {
-        height: 94%;
-        padding-top: 60px;
+        height: 84%;
     }
 
     &__footer {
         height: 6%;
+        width: 100%;
         position: relative;
         background-color: $black;
         border-top: 1px solid $white;
@@ -98,17 +99,24 @@
             position: absolute;
         }
     }
+
+    &__output-text {
+        padding: 15px 20px;
+    }
 }
 
 
 #output-container,
 #editor-container {
-    width: 50%;
-    float: left;
-    height: 100%;
-    display: block;
-    padding-top: 10px;
-    position: relative;
+    top: auto;
+    width: 100%;
+}
+
+#output-container {
+    color: $white;
+    font-size: 15px;
+    background: $black;
+    font-family: monospace;
 }
 
 #editor {
@@ -118,27 +126,6 @@
 
 #editor-container {
     background: rgb(39, 40, 34);
-}
-
-#output-container {
-    color: $white;
-    overflow: auto;
-    font-size: 15px;
-    background: $black;
-    padding: 15px 20px;
-    font-family: monospace;
-}
-
-#divisor {
-    top: 0;
-    right: 0;
-    width: 5px;
-    z-index: 1;
-    height: 100%;
-    background: #444;
-    margin-left: -5px;
-    position: absolute;
-    cursor: col-resize;
 }
 
 .overlay {
@@ -204,3 +191,6 @@
     }
 }
 
+.vsplitter {
+    z-index: 2 !important;
+}

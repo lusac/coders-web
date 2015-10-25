@@ -8,48 +8,31 @@
     };
 
     Room.prototype.init = function () {
+        this.$section = $('.room__section');
         this.$editor = $('#editor-container');
-        this.$output = $('#output-container');
+        this.$output = $('.room__output-text');
         this.$divisor = $('#divisor');
         this.$run = $('.run-btn');
         this.$runElements = $('.room__header-buttons').children();
         this.documentWidth = $(document).width();
 
+        this.splitterInit();
         this.bindEvents();
+    };
+
+    Room.prototype.splitterInit = function () {
+        this.$section.split({
+            orientation: 'vertical',
+            position: '50%'
+        });
     };
 
     Room.prototype.bindEvents = function () {
         var self = this;
 
-        this.$divisor.draggable({
-            axis: "x",
-            cursor: "col-resize",
-            drag: function() {
-                self.resizing();
-            },
-            stop: function( event, ui ) {
-                var width = parseInt($(this).css("left"), 10);
-                $(this).css({'right': 0, 'left': 'initial'});
-            }
-        });
-
         this.$run.on('click', function() {
             self.runCode();
         });
-    };
-
-    Room.prototype.resizing = function () {
-        var documentWidth = $(document).width(),
-            divisorPosition = this.$divisor.position().left - 5;
-
-        if ((divisorPosition < 150) || (divisorPosition > documentWidth - 150))
-            return;
-
-        this.$editor.css('width', this.convertToPercentage(divisorPosition));
-        this.$editor.find('.ace_content').css('width', this.convertToPercentage(divisorPosition));
-        this.$output.css('width', this.convertToPercentage(this.documentWidth - divisorPosition));
-
-        throttledEditorResize();
     };
 
     Room.prototype.runCode = function () {
@@ -94,29 +77,9 @@
         this.$output.html(string);
     };
 
-    Room.prototype.convertToPercentage = function (width) {
-        return (width * 100) / this.documentWidth + '%';
-    };
-
     window.Room = Room;
 
 })(window, document, $);
-
-var throttledEditorResize = (function() {
-    var timeWindow = 150;
-    var lastExecution = new Date((new Date()).getTime() - timeWindow);
-
-    var throttledEditorResize = function () {
-        editor.aceEditor.resize();
-    };
-
-    return function() {
-        if ((lastExecution.getTime() + timeWindow) <= (new Date()).getTime()) {
-            lastExecution = new Date();
-            return throttledEditorResize.apply(this, arguments);
-        }
-    };
-})();
 
 function shareModalStart(){
     $('#share-modal').foundation('reveal', 'open');
