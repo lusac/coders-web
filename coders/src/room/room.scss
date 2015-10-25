@@ -34,12 +34,12 @@ body {
         }
 
         &-buttons {
-            .run-btn {
-                font-size: 0.95rem !important;
-            }
-
-            .run-btn, .running-btn {
+            .run-btn,
+            .running-btn {
+                height: 100%;
                 display: none;
+                font-size: 0.75rem !important;
+                line-height: 0.75rem !important;
             }
 
             .run-btn.active, .running-btn.active {

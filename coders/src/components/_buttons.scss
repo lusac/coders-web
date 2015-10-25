@@ -17,9 +17,7 @@ button,
 .running-btn {
     color: #CCC;
     font-family: $lato;
-    text-align: center;
     border: 2px solid #CCC;
-    border-radius: $border-radius;
     background-color: transparent;
 
     img {
@@ -33,7 +31,7 @@ button,
     float: left;
     position: relative;
     border: 8px solid transparent;
-    border-width: 8px 12px;
+    border-width: 6px 10px;
     background: transparent;
     border-left-color: $white;
 }

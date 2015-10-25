@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
-  var staticUrl = 'coders/static/';
+  var root = 'coders/'
+      staticUrl = root + 'static/';
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -14,7 +15,7 @@ module.exports = function(grunt) {
     compass: {
       all: {
         options: {
-          sassDir: staticUrl + 'src/',
+          sassDir: root + 'src/',
           cssDir: staticUrl + 'css/',
           imagesDir: staticUrl + 'img/',
           outputStyle: 'compressed',
