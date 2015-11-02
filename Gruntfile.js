@@ -23,6 +23,14 @@ module.exports = function(grunt) {
         }
       },
     },
+    jasmine: {
+        test: {
+            src: root + 'src/js/**/*.js',
+            options: {
+                specs: root + 'specs/**/*spec.js'
+            }
+        }
+    },
     watch: {
       css: {
         files: ['**/*.scss'],
@@ -35,6 +43,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-autoprefixer');
 
-  grunt.registerTask('default', ['compass', 'autoprefixer']);
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
+
+  grunt.registerTask('default', ['compass', 'autoprefixer', 'jasmine']);
 
 };
