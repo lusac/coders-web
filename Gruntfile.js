@@ -1,6 +1,8 @@
 module.exports = function(grunt) {
-  var root = 'coders/'
-      staticUrl = root + 'static/';
+  var root = 'coders/',
+      staticUrl = root + 'static/',
+      srcUrl = root + 'src/',
+      vendorUrl = staticUrl + 'vendor/';
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -15,7 +17,7 @@ module.exports = function(grunt) {
     compass: {
       all: {
         options: {
-          sassDir: root + 'src/',
+          sassDir: srcUrl,
           cssDir: staticUrl + 'css/',
           imagesDir: staticUrl + 'img/',
           outputStyle: 'compressed',
@@ -25,13 +27,13 @@ module.exports = function(grunt) {
     },
     jasmine: {
         test: {
-            src: root + 'src/js/**/*.js',
+            src: srcUrl + 'js/**/*.js',
             options: {
                 specs: root + 'specs/**/*spec.js',
                 vendor: [
                   'https://code.jquery.com/jquery-2.1.4.min.js',
-                  staticUrl + 'vendor/js/jasmine_jquery/jasmine_jquery.js',
-                  staticUrl + 'vendor/**/*.js'
+                  vendorUrl + 'js/jasmine_jquery/jasmine_jquery.js',
+                  vendorUrl + '**/*.js'
                 ]
             }
         }
@@ -46,7 +48,7 @@ module.exports = function(grunt) {
       build: {
         files: [{
             expand: true,
-            cwd: root + 'src/js/',
+            cwd: srcUrl + 'js/',
             src: ['**/*.js', '*.js', '!**/*.min.js'],
             dest: staticUrl + 'js/',
             ext: '.min.js'
@@ -63,5 +65,4 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', ['compass', 'autoprefixer', 'jasmine', 'uglify']);
-
 };
