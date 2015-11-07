@@ -1,6 +1,7 @@
 describe('Simple object', function() {
-
     beforeEach(function() {
+        jasmine.getFixtures().fixturesPath = 'coders/specs/';
+        loadFixtures('custom.html');
         response = myTest();
     });
 
