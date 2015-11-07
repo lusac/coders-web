@@ -27,7 +27,12 @@ module.exports = function(grunt) {
         test: {
             src: root + 'src/js/**/*.js',
             options: {
-                specs: root + 'specs/**/*spec.js'
+                specs: root + 'specs/**/*spec.js',
+                vendor: [
+                  'https://code.jquery.com/jquery-2.1.4.min.js',
+                  staticUrl + 'vendor/js/jasmine_jquery/jasmine_jquery.js',
+                  staticUrl + 'vendor/**/*.js'
+                ]
             }
         }
     },
@@ -36,7 +41,18 @@ module.exports = function(grunt) {
         files: ['**/*.scss'],
         tasks: ['compass', 'autoprefixer']
       }
-    }
+    },
+    uglify: {
+      build: {
+        files: [{
+            expand: true,
+            cwd: root + 'src/js/',
+            src: ['**/*.js', '*.js', '!**/*.min.js'],
+            dest: staticUrl + 'js/',
+            ext: '.min.js'
+        }]
+      }
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-compass');
@@ -44,7 +60,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-autoprefixer');
 
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('default', ['compass', 'autoprefixer', 'jasmine']);
+  grunt.registerTask('default', ['compass', 'autoprefixer', 'jasmine', 'uglify']);
 
 };
