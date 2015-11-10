@@ -35,4 +35,5 @@ else:
 app.debug = DEBUG
 
 socketio.init_app(app)
-socketio.run(app, port=PORT, host='0.0.0.0')
+if __name__ == '__main__':
+    socketio.run(app, port=PORT, host='0.0.0.0')
